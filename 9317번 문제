@@ -1,0 +1,32 @@
+import java.util.*;
+import java.io.*;
+
+public class Main { 
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		while (true) {
+			
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			
+			double d = Double.parseDouble(st.nextToken());
+			int R_Hori = Integer.parseInt(st.nextToken());
+			int R_Vert = Integer.parseInt(st.nextToken());
+			
+			if (d == 0 && R_Hori == 0 && R_Vert == 0) break;
+			
+			double w = 16 * d / Math.sqrt(337);
+			
+			double DPI_Ho = R_Hori / w;
+			double DPI_Ve = R_Vert / (9 * d / Math.sqrt(337));
+			
+			System.out.println("Horizontal DPI: " + String.format("%.2f", DPI_Ho));
+			System.out.println("Vertical DPI: " + String.format("%.2f", DPI_Ve));
+			
+		}
+		
+		br.close();
+	}
+}
