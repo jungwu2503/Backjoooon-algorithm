@@ -1,0 +1,101 @@
+import java.util.*;
+import java.io.*;
+
+public class Main { 
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		int n = Integer.parseInt(st.nextToken());
+		int cut = Integer.parseInt(st.nextToken());
+		
+// 절사 평균
+		double[] score = new double[n]; 
+		
+		for (int i = 0; i < n; i++) {
+			score[i] = Double.parseDouble(br.readLine());
+		}
+		
+		Arrays.sort(score);
+		
+		double avg = 0.0;
+		
+		for (int i = cut; i < score.length-cut; i++) {
+			avg += score[i];
+		}
+		
+		avg /= score.length-(2*cut);
+		
+		System.out.println(String.format("%.2f", avg));
+	
+// 보정 평균
+		
+		double front = score[cut];
+		double rear = score[n-cut-1];
+		
+		double[] otherScore = new double[n];
+		
+		for (int i = 0; i < cut; i++) {
+			otherScore[i] = front;
+		}
+		
+		for (int i = cut; i < n-cut; i++) {
+			otherScore[i] = score[i];
+		}
+		
+		for (int i = n-cut; i < n; i++) {
+			otherScore[i] = rear;
+		}
+		
+		avg = 0.0;
+		
+		for (int i = 0; i < n; i++) {
+			avg += otherScore[i];
+		}
+		
+		avg /= n;
+		
+		System.out.println(String.format("%.2f", avg));
+		
+		
+		/* otherScore값 싹다 바꾸는걸로 오해;
+		double front = score[cut];
+		double rear = score[n-cut-1];
+		
+		double[] otherScore = new double[n]; 
+		
+		if (n % 2 == 1) {
+			for (int j = 0; j < n/2+1; j++) {
+				otherScore[j] = front;
+			}
+			for (int j = n/2+1; j < n; j++) {
+				otherScore[j] = rear;
+			}
+		}
+		else {
+			for (int j = 0; j <= n/2; j++) {
+				otherScore[j] = front;
+			}
+			for (int j = n/2+1; j < n; j++) {
+				otherScore[j] = rear;
+			}
+		}	
+		
+		avg = 0.0;	
+			
+		for (int i = 0; i < n; i++) {
+			avg += otherScore[i];
+//			System.out.println(otherScore[i]);
+		}
+		
+		avg /= n;
+		
+		System.out.println(String.format("%.2f", avg));
+		*/
+		
+		br.close();
+	}
+}
