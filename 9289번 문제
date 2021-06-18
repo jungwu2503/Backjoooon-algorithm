@@ -1,0 +1,60 @@
+import java.util.*;
+import java.io.*;
+
+public class Main { 
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		int n = Integer.parseInt(br.readLine());
+		
+		StringBuilder sb = new StringBuilder();
+		
+		StringTokenizer st;
+		
+		for (int i = 1; i <= n; i++) {
+			st = new StringTokenizer(br.readLine(), " ");
+			
+			sb.append("Case " + i + ": ");
+				
+			while(st.hasMoreTokens()) {
+				String str = st.nextToken();
+				
+				if (str.equals(".-")) sb.append("A");
+				if (str.equals("-...")) sb.append("B");
+				if (str.equals("-.-.")) sb.append("C");
+				if (str.equals("-..")) sb.append("D");
+				if (str.equals(".")) sb.append("E");
+				if (str.equals("..-.")) sb.append("F");
+				if (str.equals("--.")) sb.append("G");
+				if (str.equals("....")) sb.append("H");
+				if (str.equals("..")) sb.append("I");
+				if (str.equals(".---")) sb.append("J");
+				if (str.equals("-.-")) sb.append("K");
+				if (str.equals(".-..")) sb.append("L");
+				if (str.equals("--")) sb.append("M");
+				if (str.equals("-.")) sb.append("N");
+				if (str.equals("---")) sb.append("O");
+				if (str.equals(".--.")) sb.append("P");
+				if (str.equals("--.-")) sb.append("Q");
+				if (str.equals(".-.")) sb.append("R");
+				if (str.equals("...")) sb.append("S");
+				if (str.equals("-")) sb.append("T");
+				if (str.equals("..-")) sb.append("U");
+				if (str.equals("...-")) sb.append("V");
+				if (str.equals(".--")) sb.append("W");
+				if (str.equals("-..-")) sb.append("X");
+				if (str.equals("-.--")) sb.append("Y");
+				if (str.equals("--..")) sb.append("Z");
+			}
+			
+			sb.append("\n");
+			
+		}
+		
+		System.out.println(sb);
+		
+		br.close();
+	}
+}
