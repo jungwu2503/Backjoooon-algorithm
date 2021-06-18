@@ -1,0 +1,31 @@
+import java.util.*;
+import java.io.*;
+import java.math.BigInteger;
+
+public class Main { 
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+				
+		BigInteger a = new BigInteger(br.readLine());
+		BigInteger b = new BigInteger(br.readLine());
+		BigInteger c = new BigInteger(br.readLine());
+		
+		a = a.multiply(b).multiply(c);
+		
+		String result = a.toString();
+		
+		int[] arr = new int[10];
+		
+		for (int i = 0; i < result.length(); i++) {
+			arr[result.charAt(i)-'0']++;
+		}
+		
+		for (int i = 0; i < 10; i++) {
+			System.out.println(arr[i]);
+		}
+		
+		br.close();
+	}
+}
