@@ -1,0 +1,34 @@
+import java.util.*;
+import java.io.*;
+
+public class Main { 
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		int[] alp = { 3,2,1,2,3,3,3,3,1,1,3,1,3,3,1,2,2,2,1,2,1,1,2,2,2,1 };
+		
+		String str = br.readLine();
+		
+		int sum = 0;
+		
+		for (int i = 0; i < str.length(); i++) {
+			sum += alp[str.charAt(i) - 'A'];
+			sum %= 10;
+		}
+		
+		switch (sum) {
+			case 1: case 3: case 5: case 7: case 9: {
+				System.out.println("I'm a winner!");
+				break;
+			} 
+			case 0: case 2: case 4: case 6: case 8: {
+				System.out.println("You're the winner?");
+				break;
+			} 
+		}
+		
+		br.close();
+	}
+}
