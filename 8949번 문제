@@ -1,0 +1,71 @@
+import java.util.*;
+import java.io.*;
+
+public class Main { 
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		
+		int a = Integer.parseInt(st.nextToken());
+		int b = Integer.parseInt(st.nextToken());
+		
+		int len = 1;
+		
+		int aTmp = a;
+		int bTmp = b;
+		
+		while (aTmp / 10 > 0 || bTmp / 10 > 0) {
+			aTmp /= 10;
+			bTmp /= 10;
+			len++;
+		}
+		
+		String[] ans = new String[len];
+		
+		for (int i = len - 1; i >= 0; i--) {
+			ans[i] = Integer.toString(a%10 + b%10);
+			a /= 10;
+			b /= 10;
+		}
+		
+		for (int i = 0; i < len; i++) {
+			System.out.print(ans[i]);
+		}
+		
+		/* 문자열로 하려다 망한거 같아서 정수로
+		String a = st.nextToken();
+		String b = st.nextToken();
+		
+		String[] ans = null;
+		int longLen = 0;
+		int shortLen = 0;
+		
+		if (a.length() > b.length()) {
+			longLen = a.length();
+			shortLen = b.length();
+		}
+		else if (a.length() <= b.length()) {
+			longLen = b.length();
+			shortLen = a.length();
+		}		
+		
+		ans = new String[longLen];
+		
+		for (int i = longLen - 1; i >= 0; i--) {
+			int num = 0;
+			for (int j = shortLen - 1; j >= 0; j--) {
+				
+			}
+			
+			System.out.println(ans[i]);
+		}
+		*/
+		
+		
+		
+		br.close();
+	}
+}
