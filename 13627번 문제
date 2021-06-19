@@ -1,0 +1,44 @@
+import java.util.*;
+import java.io.*;
+
+public class Main { 
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		StringTokenizer st;
+		
+		st = new StringTokenizer(br.readLine(), " ");
+		
+		int total = Integer.parseInt(st.nextToken());
+		int returnMan = Integer.parseInt(st.nextToken());
+		
+		boolean[] returnManArr = new boolean[total];
+		
+		for (int i = 0; i < total; i++) {
+			returnManArr[i] = false;
+		}
+		
+		st = new StringTokenizer(br.readLine(), " ");
+		
+		for (int i = 0 ; i < returnMan; i++) {
+			int n = Integer.parseInt(st.nextToken());
+			
+			returnManArr[n-1] = true;
+		}
+		int cnt = 0;
+		for (int i = 0; i < total; i++) {
+			if (returnManArr[i] == false) {
+				System.out.print(i+1 + " ");
+			}
+			else {
+				cnt++;
+			}
+		}
+		
+		if (cnt == total) System.out.println("*");
+		
+		br.close();
+	}
+}
