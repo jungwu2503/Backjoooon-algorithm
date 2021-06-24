@@ -1,0 +1,316 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	
+	public static int CheckCroatia(String str) {
+		
+		int count = 0;
+		int len = str.length();
+		
+		for (int i = 0; i < len; i++) {
+			 
+			char ch = str.charAt(i);
+ 
+			if(ch == 'c' && i < len - 1) {
+				if(str.charAt(i + 1) == '=' || str.charAt(i + 1) == '-') {
+					i++;		
+				}
+				
+			}
+		    
+			else if(ch == 'd' && i < len - 1) {
+				if(str.charAt(i + 1) == '-') {
+						i++;
+					}
+				else if(str.charAt(i + 1) == 'z' && i < len - 2) {
+					
+					if(str.charAt(i + 2) == '=') {
+						i += 2;
+					}
+				}
+			}
+		    
+			else if((ch == 'l' || ch == 'n') && i < len - 1) {
+				if(str.charAt(i + 1) == 'j') {
+					i++;
+				}
+			}
+		    
+ 
+			else if((ch == 's' || ch == 'z') && i < len - 1) {
+				if(str.charAt(i + 1) == '=') {
+					i++;
+				}
+			
+		    }
+		    
+			count++;
+ 
+		}
+		
+		return count;
+		
+	/*	for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) == 'a') {
+				cnt++;
+			}
+			
+			if (str.charAt(i) == 'e') {
+				cnt++;
+			}
+			
+			if (str.charAt(i) == 'k') {
+				cnt++;
+			}
+		
+			if (str.charAt(i) == 'j') {
+				cnt++;
+			}
+			
+			if (str.charAt(i) == '=') {
+				cnt++;
+			}
+			
+			if (str.charAt(i) == '-') {
+				cnt++;
+			} 
+			
+			if (str.charAt(i) == 'c') {
+//				cnt++;
+				if (i < str.length() - 1) {
+					if (str.charAt(i+1) == '=') {
+							i++;
+					}
+					else if (str.charAt(i+1) == '-') {
+						i++;
+					}
+				}
+			}
+			
+			if (str.charAt(i) == 'd') {
+//				cnt++;
+				if (i < str.length() - 1) {
+					if (str.charAt(i+1) == 'z') {
+						if (i < str.length() - 2) {
+							if (str.charAt(i+2) == '=') {
+									i += 2;
+							}
+						}
+						else
+							i++;
+					}
+					else if (str.charAt(i+1) == '-') {
+							i++;
+					}
+				}
+			}
+			
+			if (str.charAt(i) == 'l') {
+//				cnt++;
+				if (i < str.length() - 1) {
+					if (str.charAt(i+1) == 'j') {
+						i++;
+					}
+				}
+			}
+			
+			if (str.charAt(i) == 'n') {
+//				cnt++;
+				if (i < str.length() - 1) {
+					if (str.charAt(i+1) == 'j') {
+						i++;
+					}
+				}
+			}
+			
+			if (str.charAt(i) == 's') {
+//				cnt++;
+				if (i < str.length() - 1) {
+					if (str.charAt(i+1) == '=') {
+						i++;
+					}
+				}
+			}
+			
+			if (str.charAt(i) == 'z') {
+//				cnt++;
+				if (i < str.length() - 1) {
+					if (str.charAt(i+1) == '=') {	
+						i++;
+					}
+				}
+			}
+			
+			cnt++;
+			
+		}
+		
+		return cnt; */
+	} 
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		System.out.println(CheckCroatia(br.readLine()));
+		
+		br.close();
+	}
+}
+
+
+/* StringIndexOutOfBoundsException
+
+public static int CheckCroatia(String str) {
+	
+	int cnt = 0;
+	
+	for (int i = 0; i < str.length(); i++) {
+		if (str.charAt(i) == 'a') {
+			cnt++;
+		}
+		
+		if (str.charAt(i) == 'e') {
+			cnt++;
+		}
+		
+		if (str.charAt(i) == 'k') {
+			cnt++;
+		}
+	
+		if (str.charAt(i) == 'j') {
+			cnt++;
+		}
+		
+		if (str.charAt(i) == 'c') {
+			cnt++;
+			if (str.charAt(i+1) == '=') {
+				if ((i+1) != str.length()-1) //*
+					i++;
+			}
+			else if (str.charAt(i+1) == '-') {
+				if ((i+1) != str.length()-1) //*
+				i++;
+			}
+		}
+		
+		if (str.charAt(i) == 'd') {
+			cnt++;
+			if (str.charAt(i+1) == 'z') {
+				if (str.charAt(i+2) == '=') {
+					if ((i+2) != str.length()-2) //*
+						i += 2;
+				}
+			}
+			if (str.charAt(i) == '-') {
+				if ((i+1) != str.length()-1) //*
+					i++;
+			}
+		}
+		
+		if (str.charAt(i) == 'l') {
+			cnt++;
+			if (str.charAt(i+1) == 'j') {
+				if ((i+1) != str.length()-1) //*
+				i++;
+			}
+		}
+		
+		if (str.charAt(i) == 'n') {
+			cnt++;
+			if (str.charAt(i+1) == 'j') {
+				if ((i+1) != str.length()-1) //*
+				i++;
+			}
+		}
+		
+		if (str.charAt(i) == 's') {
+			cnt++;
+			if (str.charAt(i+1) == '=') {	
+				if ((i+1) != str.length()-1) //*
+				i++;
+			}
+		}
+		
+		if (str.charAt(i) == 'z') {
+			cnt++;
+			if (str.charAt(i+1) == '=') {	
+				if ((i+1) != str.length()-1) //*
+				i++;
+			}
+		}
+	}
+	
+	return cnt;
+} */
+
+
+/* 
+  	public static int CheckCroatia(String str) {
+		
+		int cnt = 0;
+		
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) == 'a') {
+				cnt++;
+			}
+			
+			if (str.charAt(i) == 'e') {
+				cnt++;
+			}
+			
+			if (str.charAt(i) == 'k') {
+				cnt++;
+			}
+			
+			if (str.charAt(i) == 'c') {
+				if (str.charAt(i+1) == '=') {
+					cnt++;
+					i++;
+				}
+				else if (str.charAt(i+1) == '-') {
+					cnt++;
+					i++;
+				}
+			}
+			if (str.charAt(i) == 'd') {
+				if (str.charAt(i+1) == 'z') {
+					if (str.charAt(i+2) == '=') {
+						cnt++;
+						i += 2;
+					}
+				}
+				if (str.charAt(i) == '-') {
+					cnt++;
+					i++;
+				}
+			}
+			if (str.charAt(i) == 'l') {
+				if (str.charAt(i+1) == 'j') {
+					cnt++;
+					i++;
+				}
+			}
+			if (str.charAt(i) == 'n') {
+				if (str.charAt(i+1) == 'j') {
+					cnt++;
+					i++;
+				}
+			}
+			if (str.charAt(i) == 's') {
+				if (str.charAt(i+1) == '=') {
+					cnt++;
+					i++;
+				}
+			}
+			if (str.charAt(i) == 'z') {
+				if (str.charAt(i+1) == '=') {
+					cnt++;
+					i++;
+				}
+			}
+		}
+		
+		return cnt;
+	} */
