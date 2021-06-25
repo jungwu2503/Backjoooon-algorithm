@@ -1,0 +1,90 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		int n = Integer.parseInt(br.readLine());
+
+		int[] q = new int[2*n];
+		
+		for (int i = 1; i <= n; i++) {
+			q[i] = i;
+		}
+		
+		int prev_index = 1;
+		int last_index = n;
+		
+		while (n > 1) {
+			prev_index++;
+			q[last_index + 1] = q[prev_index];
+			last_index++;
+			prev_index++;			
+			
+			n--;
+		}
+		
+		System.out.println(q[prev_index]);
+		
+		br.close();
+	}
+	
+}
+
+/*
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	
+	public static int[] queue;
+	public static int size = 0;
+	public static int front = 0;
+	public static int rear;
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		int n = Integer.parseInt(br.readLine());
+		
+		queue = new int[n];
+		
+		for (int i = 0; i < n; i++) {			
+			queue[i] = i+1;			
+		}
+		
+		int result = pushAndPop();
+		
+		System.out.println(result);
+		
+		br.close();
+	}
+	
+	public static int pushAndPop() {
+		size = queue.length;
+		int tmp = 0;
+		
+		for (int i = 0; i < size; i++) {
+			queue[front] = 0;
+			front++;
+			
+			if (front <= size) {
+				tmp = queue[front];
+			}
+			
+			for (int j = front; j < size - 1; j++) {
+				queue[j] = queue[j+1];
+			}
+			
+			queue[size-1] = tmp;
+		}
+	
+		return queue[size-1];
+	}
+	
+}
+*/
