@@ -1,0 +1,31 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		int lionCnt = 0;
+		int tigerCnt = 0;
+		
+		for (int i = 0; i < 9; i++) {
+			String vote = br.readLine();
+			
+			if (vote.equals("Lion"))
+				lionCnt++;
+			else if (vote.equals("Tiger"))
+				tigerCnt++;
+		}
+		
+		if (lionCnt > tigerCnt)
+			System.out.println("Lion");
+		else
+			System.out.println("Tiger");
+		
+		br.close();
+	}	
+	
+}
+
