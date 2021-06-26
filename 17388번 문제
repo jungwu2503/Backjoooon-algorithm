@@ -1,0 +1,32 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		
+		int soo = Integer.parseInt(st.nextToken());
+		int kor = Integer.parseInt(st.nextToken());
+		int han = Integer.parseInt(st.nextToken());
+		
+		if (soo + kor + han >= 100)
+			System.out.println("OK");
+		else {
+			if (soo <= kor && soo <= han) 
+				System.out.println("Soongsil");
+			if (kor <= soo && kor <= han) 
+				System.out.println("Korea");
+			if (han <= kor && han <= soo) 
+				System.out.println("Hanyang");
+		}
+		
+		
+		br.close();
+	}	
+	
+}
+
