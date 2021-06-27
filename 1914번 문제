@@ -1,0 +1,39 @@
+import java.util.*;
+import java.io.*;
+import java.math.BigInteger;
+
+public class Main {
+	
+	static void hanoi(int n, int start, int mid, int end) {
+		// n = 원판수, start = 시작막대, mid = 가운데, end = 도착지
+		if (n == 1) {
+			System.out.println(start+ " " + end);
+			return;
+		}
+		
+		hanoi(n - 1, start, end, mid);
+		// n-1 개 원판을  start -> end -> mid
+		System.out.println(start+ " " + end);
+		// start -> end
+		hanoi(n - 1, mid, start, end);
+		// mid의 n-1개 원판 -> end
+		return;
+	}
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int n = Integer.parseInt(br.readLine());
+		
+		BigInteger bi = new BigInteger("2");
+		BigInteger c = bi.pow(n).subtract(BigInteger.ONE);
+		System.out.println(c);
+		
+		if (n <= 20)
+			hanoi(n, 1, 2, 3);
+		
+		br.close();
+	}	
+	
+}
