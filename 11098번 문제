@@ -1,0 +1,54 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		StringBuilder sb = new StringBuilder();
+		
+		int n = Integer.parseInt(br.readLine());
+		
+		for (int i = 0; i < n; i++) {
+			int m = Integer.parseInt(br.readLine());
+//			String[][] player = new String[m][2];
+			HashMap<Integer, String> player = new HashMap<>();
+			int max = -1;
+//			int index = 0;
+			
+			for (int j = 0; j < m; j++) {
+				st = new StringTokenizer(br.readLine(), " ");
+				
+				int price = Integer.parseInt(st.nextToken());
+				String name = st.nextToken();
+				player.put(price, name);
+				
+				if (price > max) {
+					max = price;
+//					index = j;
+				}
+				
+//				player[j][0] = st.nextToken();
+//				player[j][1] = st.nextToken();
+				
+			}
+			
+//			if (player.price == max)
+//			if (player.containsValue(max))
+			sb.append(player.get(max)).append("\n");
+			
+			
+//			Arrays.sort(player);
+
+//			System.out.println(player[m-1][1]);
+			
+		}		
+		
+		System.out.println(sb);
+		
+		br.close();
+	}	
+	
+}
