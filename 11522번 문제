@@ -1,0 +1,47 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		
+		int n = Integer.parseInt(br.readLine());
+		
+		int intSum = 0;
+		int oddSum = 0;
+		int evenSum = 0;
+		
+		for (int i = 0; i < n; i++) {
+			
+			intSum = 0;
+			oddSum = 0;
+			evenSum = 0;
+			
+			st = new StringTokenizer(br.readLine(), " ");
+			
+			int index = Integer.parseInt(st.nextToken());
+			
+			int x = Integer.parseInt(st.nextToken());
+			
+			for (int j = 1; j <= 2 * x; j++) {
+				if (j <= x) 
+					intSum += j;
+				if (j % 10 == 1 || j % 10 == 3 || j % 10 == 5 || j % 10 == 7 || j % 10 == 9)
+					oddSum += j;
+				if (j % 10 == 2 || j % 10 == 4 || j % 10 == 6 || j % 10 == 8 || j % 10 == 0)
+					evenSum += j;
+			}
+			
+			System.out.println(index + " " + intSum + " " + oddSum + " " + evenSum);
+			
+		}
+		
+		
+		br.close();
+	}	
+	
+}
+
