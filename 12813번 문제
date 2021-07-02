@@ -1,0 +1,75 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		String bitA = br.readLine();
+		String bitB = br.readLine();
+		
+		// A & B
+		for (int i = 0; i < bitA.length(); i++) {
+			if (bitA.charAt(i) == '1' && bitB.charAt(i) == '1') {
+				System.out.print("1");
+			}
+			else {
+				System.out.print("0");
+			}
+		}
+		
+		System.out.println();
+		
+		// A | B
+		for (int i = 0; i < bitA.length(); i++) {
+			if (bitA.charAt(i) == '1' || bitB.charAt(i) == '1') {
+				System.out.print("1");
+			}
+			else {
+				System.out.print("0");
+			}
+		}
+				
+		System.out.println();
+		
+		// A ^ B
+		for (int i = 0; i < bitA.length(); i++) {
+			if (bitA.charAt(i) == '1' && bitB.charAt(i) == '0') {
+				System.out.print("1");
+			}
+			else if (bitA.charAt(i) == '0' && bitB.charAt(i) == '1') {
+				System.out.print("1");
+			}
+			else {
+				System.out.print("0");
+			}
+		}
+		
+		System.out.println();
+		
+		// ~A 
+		for (int i = 0; i < bitA.length(); i++) {
+			if (bitA.charAt(i) == '1') {
+				System.out.print("0");
+			} else if (bitA.charAt(i) == '0') {
+				System.out.print("1");
+			}
+		}
+			
+		System.out.println();
+		
+		// ~B
+		for (int i = 0; i < bitB.length(); i++) {
+			if (bitB.charAt(i) == '1') {
+				System.out.print("0");
+			} else if (bitB.charAt(i) == '0') {
+				System.out.print("1");
+			}
+		}
+		
+		br.close();
+	}	
+	
+}
