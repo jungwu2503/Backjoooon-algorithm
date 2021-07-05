@@ -1,0 +1,46 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	
+/*	public static int LaunchDay(int n, int[] spaceRubbish) {
+		int min = spaceRubbish[0];
+		int day = 0;
+		for (int i = 0; i < n; i++) {
+			if (spaceRubbish[i] <= min) {
+				min = spaceRubbish[i];
+				day = i;
+			}
+		}
+		
+		return day;
+	} */
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st;
+		
+		int n = Integer.parseInt(br.readLine());
+		st = new StringTokenizer(br.readLine(), " ");
+		int[] spaceRubbish = new int[n];
+		
+		spaceRubbish[0] = Integer.parseInt(st.nextToken());
+		int min = spaceRubbish[0];
+		int index = 0;
+		for (int i = 1; i < n; i++) {
+			spaceRubbish[i] = Integer.parseInt(st.nextToken());	
+			if (spaceRubbish[i] < min) {
+				min = spaceRubbish[i];
+				index = i;
+			}
+		}
+		
+		System.out.println(index);
+//		System.out.println(LaunchDay(n, spaceRubbish));
+		
+		br.close();
+	}	
+	
+}
