@@ -1,0 +1,37 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	
+	public static int CheckOX(int n, int m, int k) {
+		
+		int o;
+		int x;
+		
+		if (m > k) {
+			o = k;
+			x = n - m;
+		} else {
+			o = m;
+			x = n - k;
+		}
+		
+		return o + x;
+	}
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st = new StringTokenizer(br.readLine(), " ");
+		
+		int n = Integer.parseInt(st.nextToken());
+		int m = Integer.parseInt(st.nextToken());
+		int k = Integer.parseInt(st.nextToken());
+		
+		System.out.println(CheckOX(n, m, k));
+		
+		br.close();
+	}	
+	
+}
