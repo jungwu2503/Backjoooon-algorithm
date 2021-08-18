@@ -1,0 +1,80 @@
+import java.util.*;
+import java.io.*;
+public class Main {
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		
+		while (true) {
+			String str = br.readLine();
+			
+			if (str.charAt(0)=='.') break;
+			
+			sb.append(solve(str)).append('\n');
+		}
+		
+		System.out.println(sb);
+	}
+	
+	public static String solve(String s) {
+		
+//		Stack<Character> parenthesis = new Stack<>();
+		Stack<Character> bracket = new Stack<>();
+		
+		for (int i = 0; i < s.length(); i++) {
+			
+			char c = s.charAt(i);
+			
+			if (c == '(' || c == '[') {
+				bracket.push(c);
+			} else if (c == ')') {
+				if (bracket.empty() || bracket.peek() != '(') {
+					return "no";
+				}
+				else {
+					bracket.pop();
+				}
+			} else if (c == ']') {
+				if (bracket.empty() || bracket.peek() != '[') {
+					return "no";
+				} else {
+					bracket.pop();
+				}
+			}
+			
+/*			if (c == '(') {
+				parenthesis.push(c);
+			}
+			else if (c == '[') {
+				bracket.push(c);
+			}
+			else if (c == ')') {
+				if (parenthesis.empty()) {
+					return "no";
+				}
+				parenthesis.pop();
+			}
+			else if (c == ']') {
+				if (bracket.empty()) {
+					return "no";
+				}
+				bracket.pop();				
+			} */
+			
+		}
+		
+		if (bracket.empty()) {
+			return "yes";
+		} 
+		return "no";
+				
+/*		if (parenthesis.empty() && bracket.empty()) {
+			return "yes";
+		}
+		return "no";*/
+		
+	}
+	
+}
