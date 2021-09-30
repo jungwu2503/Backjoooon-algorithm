@@ -1,0 +1,39 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		//가장 처음과 마지막 문자는 숫자임
+		int sum = Integer.MAX_VALUE; // 초기 상태 여부 확인을 위한 값으로 설정
+									 // 반드시 Integer.MAX_VALUE?
+									 // 0같은 작은 수로 선언하면 계산하다 걸려서 그런듯
+		StringTokenizer subSt = new StringTokenizer(br.readLine(), "-");
+		
+		while (subSt.hasMoreTokens()) {
+			int temp = 0;
+			
+			StringTokenizer addSt = new StringTokenizer(subSt.nextToken(), "+");
+			// ㄴ 뺄셈으로 나뉜 토큰을 덧셈으로 분리
+			
+			while (addSt.hasMoreTokens()) {
+				temp += Integer.parseInt(addSt.nextToken());
+			}
+			
+			
+			if (sum == Integer.MAX_VALUE) {
+				sum = temp; // 첫 번째 토큰일 경우 첫번째 수는 temp가 됨
+			} else {
+				sum -= temp;
+			}
+			
+		}
+		
+		System.out.println(sum);
+		
+	}
+	
+}
