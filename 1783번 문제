@@ -1,0 +1,35 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	
+	public static void main (String args[]) throws IOException {
+	
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		int n = Integer.parseInt(st.nextToken());
+		int m = Integer.parseInt(st.nextToken());
+		
+		int count = 0;
+		
+		if (n == 1) {
+			count = 1; // 시작지점만 count 
+		} else if (n == 2) {
+			count = Math.min((m+1)/2, 4); 
+		} else if (n >= 3) {
+			if (m < 7) {
+				count = Math.min(m, 4);
+			} else {
+				count = m - 2;
+			}
+		}
+		
+		System.out.println(count);
+		
+		br.close();
+		
+	} 
+	
+}
