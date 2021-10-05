@@ -1,0 +1,38 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	
+	public static void main (String args[]) throws IOException {
+	
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		
+		int n = Integer.parseInt(br.readLine());
+		
+		for (int i = 0; i < n; i++) {
+			st = new StringTokenizer(br.readLine());
+			String str1 = st.nextToken();
+			String str2 = st.nextToken();
+			
+			int zeroCnt = 0;
+			int oneCnt = 0;
+			
+			for (int j = 0; j < str1.length(); j++) {
+				if (str1.charAt(j) != str2.charAt(j)) {
+					if (str1.charAt(j) == '0' && str2.charAt(j) == '1') {
+						zeroCnt++;
+					} else if (str1.charAt(j) == '1' && str2.charAt(j) == '0') {
+						oneCnt++;
+					}
+				}
+			}
+			
+			System.out.println(Math.abs(zeroCnt - oneCnt) + Math.min(zeroCnt, oneCnt));
+			
+		}
+		
+		br.close();
+	} 
+	
+}
