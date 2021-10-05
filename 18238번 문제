@@ -1,0 +1,40 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	
+	public static void main (String args[]) throws IOException {
+	
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		char start = 'A';
+		int time = 0;
+		
+		String str = br.readLine();
+		
+		for (int i = 0; i < str.length(); i++) {
+			char c = str.charAt(i);
+			int temp = Math.abs(start - c);
+			time += Math.min(temp, 26-temp);
+			start = c;
+		}
+		
+		System.out.println(time);
+		
+/*		char[] alpha = {'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+		char[] reverseAlpha = new char[26];
+		for (int i = 25; i >= 0; i--) {
+			reverseAlpha[25-i] = alpha[i];
+		}		
+		
+		String str = br.readLine();
+		
+		for (int i = 0; i < str.length(); i++) {
+			
+		}
+		*/
+		
+		br.close();
+	} 
+	
+}
