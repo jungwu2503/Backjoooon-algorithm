@@ -1,0 +1,59 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	
+	public static void main (String args[]) throws IOException {
+	
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		//StringTokenizer st;
+		
+		int n = Integer.parseInt(br.readLine());
+		
+		PriorityQueue<Long> pq = new PriorityQueue<Long>();
+		
+		for (int i = 0; i < n; i++) {
+			pq.add(Long.parseLong(br.readLine()));
+		}
+		
+		long num = 0;
+		
+		while (pq.size() > 1) { // 우선순위 큐에 2개 이상 있을때 비교 가능
+			long temp1 = pq.poll();
+			long temp2 = pq.poll();
+			
+			num += temp1 + temp2;
+			pq.add(temp1 + temp2);
+		}
+		
+		System.out.println(num);
+		
+/*		int[] arr = new int[n];
+		
+		for (int i = 0; i < n; i++) {
+			arr[i] = Integer.parseInt(br.readLine());
+		}
+		
+		Arrays.sort(arr);
+		
+		int sum = 0;
+		int std = arr[0];
+		
+		for (int i = 1; i < n; i++) {
+			std += arr[i];
+			sum += std;
+		}
+		
+//		int sum = arr[0];
+//		
+//		for (int i = 1; i < n; i++) {
+//			sum += arr[i];
+//			if (i != n-1) sum += sum;
+//		} 
+		
+		System.out.println(sum); */
+		
+		br.close();
+	} 
+	
+}
