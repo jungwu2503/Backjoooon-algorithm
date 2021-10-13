@@ -1,0 +1,49 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	
+	public static void main (String args[]) throws IOException {
+	
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		int len = Integer.parseInt(st.nextToken());
+		int dist = Integer.parseInt(st.nextToken());
+		boolean[] visited = new boolean[len];
+		ArrayList<Integer> burger = new ArrayList<Integer>();
+		
+		String str = br.readLine();
+		
+		int cnt = 0;
+		
+		for (int i = 0; i < len; i++) {
+			if (str.charAt(i) == 'H') {
+				burger.add(i);
+				visited[i] = true;
+			}
+		}
+		
+		for (int i = 0; i < burger.size(); i++) {
+			for (int j = burger.get(i)-dist; j <= burger.get(i)+dist; j++) {
+				if (j < 0 || j >= len) continue;
+				if (visited[j] == false) {
+					visited[j] = true;
+					cnt++;
+					break;
+				}
+			}
+		} 
+		
+		System.out.println(cnt);
+		
+/*		for (int i = 0+dist; i < len-dist; i++) {
+			if (str.charAt(i) == 'P') 			
+		}*/
+		
+		
+		
+	} 
+	
+}
