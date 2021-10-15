@@ -1,0 +1,81 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	
+	static int N = 0, ans = 0;
+	
+	public static void search(int n, int sum) {
+		for (int i = 0; i < 3; i++) {
+			if (n == 0 && i == 0) continue;
+			if (n == N) {
+				if (sum % 3 == 0) ans++;
+				return;
+			} else {
+				search(n + 1, sum + i);
+			}
+		}
+	}
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		N = Integer.parseInt(br.readLine());
+		search(0,0);
+		System.out.println(ans);
+	
+/*		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int n = Integer.parseInt(br.readLine());
+		int cnt = 0;
+		
+		int[] multipleOfThree = new int[(int) Math.pow(10, n)];
+		
+		multipleOfThree[0] = -1;
+		for (int i = 1; i < multipleOfThree.length; i++) {
+			multipleOfThree[i] = i;
+			
+			if (multipleOfThree[i] % 3 == 0) {
+				String str = String.valueOf(multipleOfThree[i]);
+				if (str.contains("3") || str.contains("4") || str.contains("5") || str.contains("6") || str.contains("7") || str.contains("8") || str.contains("9")) continue;
+				else {
+					System.out.println(multipleOfThree[i]);
+					cnt++;
+				}
+//				if (!(str.contains("0") && str.contains("1") && str.contains("2"))) continue;
+//				else {
+//					System.out.println(multipleOfThree[i]);
+//					cnt++;
+//				}
+			}
+			
+		} */
+		
+		
+		/*
+		int[] multipleOfThree = new int[10^n-1];
+		
+		int mul = 3;
+		
+		for (int i = 0; i < multipleOfThree.length; i++) {
+			multipleOfThree[i] = mul * (i+1);
+		}
+		
+		int cnt = multipleOfThree.length;
+		for (int i = 0; i < multipleOfThree.length; i++) {
+			while (multipleOfThree[i] > 0) {
+				if (multipleOfThree[i] % 10 != 0 && multipleOfThree[i] % 10 != 1 && multipleOfThree[i] % 10 != 2) {
+					cnt--;
+					break;
+				}
+				multipleOfThree[i] /= 10;
+			}
+			
+		}
+		System.out.println(cnt);
+		*/
+		
+	}
+	
+}
