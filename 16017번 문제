@@ -1,0 +1,30 @@
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	
+	public static void main (String args[]) throws IOException {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		int[] nums = new int[4];
+		
+		for (int i = 0; i < 4; i++) {
+			nums[i] = Integer.parseInt(br.readLine());
+		}
+		
+		if (nums[0] == 8 || nums[0] == 9) {
+			if (nums[3] == 8 || nums[3] == 9) {
+				if (nums[1] == nums[2])
+					System.out.println("ignore");
+				else
+					System.out.println("answer");
+			}
+			else
+				System.out.println("answer");
+		}
+		else
+			System.out.println("answer");
+	}
+	
+}
