@@ -1,0 +1,27 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws IOException {
+
+		Scanner scan = new Scanner(System.in);
+		
+		while (scan.hasNextLine()) {
+			System.out.println(scan.nextLine());
+		}
+		
+		scan.close();
+		/*BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		//StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		int n = 101;
+		while(n-- > 0) {
+			String str = br.readLine();
+			System.out.println(str);
+		}*/
+		
+	}
+
+}
