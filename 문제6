@@ -1,0 +1,179 @@
+문제 설명
+게임 참가자에게 5장의 카드를 나누어 주는 게임이 있다. 카드에는 1부터 13까지의 숫자가 적혀있고, 각 숫자를 가진 카드는 4장씩 있다. 카드의 무늬는 고려하지 않는다. 이 게임의 승자는 카드의 족보 중에서 가장 높은 계급을 가진 참가자이다. 가장 높은 계급부터 카드의 족보를 나열하면 다음과 같다. 높은 계급과 낮은 계급을 동시에 만족하면 높은 계급에 해당한다.
+
+ 
+
+(1) 포커 : 동일한 숫자 카드 4장을 가진 상태, 예, (1, 1, 1, 1, 3)
+
+(2) 풀하우스 : 동일한 숫자 카드 3장과 동일한 숫자 카드 2장을 가진 상태, 예, (2, 2, 2, 1, 1)
+
+(3) 스트레이트 : 5장 카드의 숫자가 연속적인 상태, 13과 1도 연속적이라고 가정한다. 예를 들어, (10, 11, 12, 13, 1), (12, 13, 1, 2, 3) 등도 스트레이트이다.
+
+(4) 트리플 : 동일한 숫자 카드 3장을 가진 상태, 예, (11, 11, 11, 2, 5)
+
+(5) 투페어 : 동일한 숫자 카드 두 쌍을 가진 상태, 예, (3, 3, 7, 9, 9)
+
+(6) 원페어 : 동일한 숫자 카드 한 쌍을 가진 상태, 예, (1, 5, 9, 12, 12)
+
+(7) 하이카드 : 카드의 숫자가 모두 다른 상태, 예, (2, 4, 8, 9, 13)
+
+ 
+
+카드 5장을 받았을 때, 어떤 계급인지 판단하는 프로그램을 작성하시오. 
+
+
+입력
+입력은 표준 입력으로 주어진다. 입력의 첫 줄에 다섯 개의 정수 a, b, c, d, e가 빈칸을 사이에 두고 주어진다. 각 정수는 1 이상 13 이하이다. 
+
+
+출력
+출력은 표준 출력으로 한다. 입력으로 주어진 숫자 카드 5장에 해당하는 계급 정보를 출력한다. 계급이 포커이면 poker, 풀하우스이면 full, 스트레이트이면 straight, 트리플이면 triple, 투페어이면 two, 원페어이면 one, 하이카드이면 high를 출력한다.
+
+ 
+
+입력 예시 1
+3 1 9 3 3
+출력 예시 1
+triple
+입력 예시 2
+8 3 1 4 6
+출력 예시 2
+high
+입력 예시 3
+8 9 10 6 7
+출력 예시 3
+straight
+
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws IOException {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		int[] card = new int[13];
+		
+		for (int i = 0; i < 5; i++) {
+			int input = Integer.parseInt(st.nextToken());
+			if (input == 13) 
+				card[0]++;
+			else {
+				card[input]++;
+			}				
+		}
+		
+		boolean checkThree = false;
+		boolean checkTwo = false;
+		boolean checkTwoPair = false;
+		boolean answered = false;
+		
+		for (int i = 0; i <= 12; i++) {
+			if (card[i] == 4) {
+				System.out.println("poker");
+				answered = true;
+				break;
+			}
+			if (card[i] == 2) {
+				if (!checkTwo)
+					checkTwo = true;
+				else
+					checkTwoPair = true;
+			}
+			if (card[i] == 3) {				
+				checkThree = true;
+			}
+			if (checkTwo && checkThree) {
+				System.out.println("full");
+				answered = true;
+				break;
+			}
+			if (card[0] == 1 && card[1] == 1 && card[2] == 1 && card[3] == 1 && card[4] == 1) {
+				System.out.println("straight");
+				answered = true;
+				break;
+			}
+			if (card[1] == 1 && card[2] == 1 && card[3] == 1 && card[4] == 1 && card[5] == 1) {
+				System.out.println("straight");
+				answered = true;
+				break;
+			}
+			if (card[2] == 1 && card[3] == 1 && card[4] == 1 && card[5] == 1 && card[6] == 1) {
+				System.out.println("straight");
+				answered = true;
+				break;
+			}
+			if (card[3] == 1 && card[4] == 1 && card[5] == 1 && card[6] == 1 && card[7] == 1) {
+				System.out.println("straight");
+				answered = true;
+				break;
+			}
+			if (card[4] == 1 && card[5] == 1 && card[6] == 1 && card[7] == 1 && card[8] == 1) {
+				System.out.println("straight");
+				answered = true;
+				break;
+			}
+			if (card[5] == 1 && card[6] == 1 && card[7] == 1 && card[8] == 1 && card[9] == 1) {
+				System.out.println("straight");
+				answered = true;
+				break;
+			}
+			if (card[6] == 1 && card[7] == 1 && card[8] == 1 && card[9] == 1 && card[10] == 1) {
+				System.out.println("straight");
+				answered = true;
+				break;
+			}
+			if (card[7] == 1 && card[8] == 1 && card[9] == 1 && card[10] == 1 && card[11] == 1) {
+				System.out.println("straight");
+				answered = true;
+				break;
+			}
+			if (card[8] == 1 && card[9] == 1 && card[10] == 1 && card[11] == 1 && card[12] == 1) {
+				System.out.println("straight");
+				answered = true;
+				break;
+			}
+			if (card[9] == 1 && card[10] == 1 && card[11] == 1 && card[12] == 1 && card[0] == 1) {
+				System.out.println("straight");
+				answered = true;
+				break;
+			}
+			if (card[10] == 1 && card[11] == 1 && card[12] == 1 && card[0] == 1 && card[1] == 1) {
+				System.out.println("straight");
+				answered = true;
+				break;
+			}
+			if (card[11] == 1 && card[12] == 1 && card[0] == 1 && card[1] == 1 && card[2] == 1) {
+				System.out.println("straight");
+				answered = true;
+				break;
+			}
+			if (card[12] == 1 && card[0] == 1 && card[1] == 1 && card[2] == 1 && card[3] == 1) {
+				System.out.println("straight");
+				answered = true;
+				break;
+			}
+		
+		}
+		
+		if (!answered) {
+			if (checkThree && !checkTwo) {
+				System.out.println("triple");
+				answered = true;
+			}
+			if (checkTwoPair) {
+				System.out.println("two");
+				answered = true;
+			}
+			if (checkTwo && !answered) {
+				System.out.println("one");
+				answered = true;
+			}
+			if (!answered) System.out.println("high");
+		}
+	}
+
+}
