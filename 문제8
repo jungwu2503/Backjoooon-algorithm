@@ -1,0 +1,56 @@
+문제 설명
+입력으로 주어진 두 영문 알파벳 문자의 ASCII 코드를 비교하여 16진수로 1의 자릿수가 더 큰 문자를 출력하는 프로그램을 작성하시오. 만일, 두 문자가 그 값이 같다면 0을 출력하시오. 예를 들어, 문자 ‘A’와 ‘b’가 주어지면, 두 문자의 ASCII 코드가 16진수로 각각 41과 62이므로 1의 자릿수는 ‘b’가 더 크다. 문자 ‘L’과 ‘T’가 주어지면, 두 문자의 ASCII 코드가 16진수로 각각 4C와 54이므로 1의 자릿수는 ‘L’이 더 크다.
+
+
+입력
+입력은 표준 입력으로 주어진다. 입력의 첫 줄에 2개의 영문 알파벳 문자(A~Z, a~z)가 빈칸을 사이에 두고 주어진다.
+
+
+출력
+출력은 표준 출력으로 한다. 입력으로 들어온 두 문자 중 ASCII 코드의 16진수 1의 자릿수가 더 큰 문자를 출력한다. 만일 1의 자릿수가 같으면 0을 출력한다.
+
+
+입력 예시 1
+A b
+출력 예시 1
+b
+입력 예시 2
+L T
+출력 예시 2
+L
+입력 예시 3
+A Q
+출력 예시 3
+0
+
+import java.io.*;
+import java.util.*;
+ 
+public class Main {
+ 
+    public static void main(String[] args) throws IOException {
+ 
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+         
+        StringTokenizer st = new StringTokenizer(br.readLine());
+         
+        char x = st.nextToken().charAt(0);
+        char y = st.nextToken().charAt(0);
+         
+        String hexNumX = Integer.toHexString(x);
+        String hexNumY = Integer.toHexString(y);
+         
+        int lastNumX = hexNumX.charAt(hexNumX.length()-1);
+        int lastNumY = hexNumY.charAt(hexNumY.length()-1);
+         
+        if (lastNumX < lastNumY) {
+            System.out.println(y);
+        } else if (lastNumX > lastNumY) {
+            System.out.println(x);
+        } else {
+            System.out.println(0);
+        }
+         
+    }
+ 
+}
