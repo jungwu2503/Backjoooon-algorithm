@@ -1,0 +1,150 @@
+문제 설명
+정수 N의 k-회전수를 다음과 같이 정의한다.
+
+(1) N의 1-회전수는 N에서 1의 자릿수를 가장 높은 자릿수로 이동시키고 나머지 각 자릿수를 한 칸씩 오른쪽으로 이동시켜서 만든 수이다.
+
+(2) N의 k-회전수는 N의 (k-1)-회전수의 1-회전수이다.
+
+ 
+
+예를 들어, N=209831이라면, k-회전수는 다음과 같다.
+
+1-회전수 : 120983
+
+2-회전수 : 312098
+
+3-회전수 : 831209
+
+4-회전수 : 983120
+
+5-회전수 : 098312 => 98312
+
+6-회전수 : 209831
+
+7-회전수 : 120983
+
+...
+
+ 
+
+정수 N의 가장 큰 회전수는 k-회전수 중에서 가장 큰 수를 말한다. 위의 예에서 가장 큰 회전수는 983120이다.
+
+입력으로 주어진 정수의 가장 큰 회전수를 출력하는 프로그램을 작성하시오. 
+
+
+입력
+입력은 표준 입력으로 주어진다. 입력의 첫 줄에 1개의 정수가 주어진다. 정수는 10 이상 1,000,000,000 이하이다.
+
+
+출력
+출력은 표준 출력으로 한다. 입력으로 들어온 정수의 가장 큰 회전수를 출력한다.
+
+
+입력 예시 1
+209831
+출력 예시 1
+983120
+입력 예시 2
+22222
+출력 예시 2
+22222
+
+
+import java.io.*;
+import java.util.*;
+ 
+public class Main {
+ 
+    public static void main(String[] args) throws IOException {
+ 
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+         
+        int n = Integer.parseInt(br.readLine());
+         
+        int x = n;
+        int maxValue = 0;
+         
+        int numSize = 0;
+         
+        while (x > 0) {
+             x /= 10;
+             numSize++;
+        }
+        //System.out.println(numSize);
+         
+        /*int size = 1;
+        for (int i = 0; i < numSize; i++) {
+            size *= 10;
+        } */
+        int size = (int)Math.pow(10, numSize);
+         
+        size /= 10;
+        int spinNum = (n % 10) * size + (n / 10);
+         
+        //System.out.println(spinNum);
+         
+        //System.out.println(size);
+         
+        boolean flag = false;
+        for (int i = 0; i < numSize; i++) {
+             
+            if (spinNum > maxValue) {
+                maxValue = spinNum;
+            }
+             
+            spinNum = (spinNum % 10) * size + (spinNum / 10);
+             
+            /*
+            int spinSize = 0;
+            int y = spinNum;
+            while (y > 0) {
+                y /= 10;
+                spinSize++;
+            }
+            int powNum = (int)Math.pow(10, spinSize);
+            if (powNum == size) continue;
+            else {
+                spinNum *= 10;
+            }
+             
+            if (flag) {
+                spinNum *= 10;
+                flag = false;
+            }
+            if (spinNum % 10 == 0) flag = true;*/
+             
+            //System.out.println(spinNum);
+        }
+         
+         
+        //System.out.println(size);
+        System.out.println(maxValue);
+         
+        /*
+        String str = br.readLine();
+        int index = 0;
+         
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < str.length(); i++) {
+            if (Integer.valueOf(str.charAt(i)-'0') > max) {
+                max = Integer.valueOf(str.charAt(i)-'0');
+                index = i+1;
+            }
+        }
+         
+        int x = (int) Math.pow(10, index);
+         
+        int rem = Integer.parseInt(str)%x;
+        int val = Integer.parseInt(str)/x;
+         
+        int res = rem * (index*10) + val;
+         
+        System.out.println(rem);
+        System.out.println(val);
+        System.out.println(res);
+         
+        System.out.println(rem+""+val); */
+    }
+ 
+}
+ 
