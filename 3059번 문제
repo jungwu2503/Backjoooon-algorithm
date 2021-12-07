@@ -1,0 +1,31 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws IOException {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int n = Integer.parseInt(br.readLine());
+		
+		
+		for (int i = 0; i < n; i++) {
+			int sum = 2015;
+			String str = br.readLine();
+			boolean[] alpha = new boolean[26];
+			for (int j = 0; j < 26; j++) {
+				alpha[j] = true;
+			}
+			for (int j = 0; j < str.length(); j++) {
+				if (str.charAt(j) >= 'A' && str.charAt(j) <= 'Z' && alpha[str.charAt(j)-'A'] == true) {
+					sum -= str.charAt(j);
+					alpha[str.charAt(j)-'A'] = false;
+				}
+			}
+			System.out.println(sum);
+		} 
+		
+	}
+
+}
