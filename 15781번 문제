@@ -1,0 +1,37 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st;
+		
+		st = new StringTokenizer(br.readLine());
+		
+		int a = Integer.parseInt(st.nextToken());
+		int b = Integer.parseInt(st.nextToken());
+		
+		int[] arrA = new int[a];
+		int[] arrB = new int[b];
+		
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < a; i++) {
+			arrA[i] = Integer.parseInt(st.nextToken());
+		}
+		
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < b; i++) {
+			arrB[i] = Integer.parseInt(st.nextToken());
+		}
+		
+		Arrays.sort(arrA);
+		Arrays.sort(arrB);
+		
+		System.out.println(arrA[a-1]+arrB[b-1]);
+		
+	}
+
+}
