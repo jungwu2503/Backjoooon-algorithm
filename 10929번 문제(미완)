@@ -1,0 +1,35 @@
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.util.*;
+
+public class Main {
+	
+	public static String generate(String str) throws Exception {
+		
+		MessageDigest md = MessageDigest.getInstance("SHA-244");
+
+		md.update(str.getBytes("utf-8"));
+		
+		//return Hex.encodeHexString(md.digest());
+		
+		/*MessageDigest md = MessageDigest.getInstance("SHA-244");
+		md.update(str.getBytes());*/
+		
+		byte[] digest = md.digest();
+		String result = new BigInteger(1, digest).toString(16).toUpperCase();
+		return result;
+	}
+
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		//StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		String str = br.readLine();
+		
+		System.out.println(generate(str));
+	}
+
+}
