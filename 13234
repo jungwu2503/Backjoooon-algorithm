@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		String a = st.nextToken();
+		String op = st.nextToken();
+		String b = st.nextToken();
+		
+		if (a.equals("true")) {
+			if (op.equals("AND")) {
+				if (b.equals("true")) {
+					System.out.println("true");
+				} else if (b.equals("false")) {
+					System.out.println("false");
+				}
+			} else if (op.equals("OR")) {
+				if (b.equals("true")) {
+					System.out.println("true");
+				} else if (b.equals("false")) {
+					System.out.println("true");
+				}
+			}
+		} else if (a.equals("false")) {
+			if (op.equals("AND")) {
+				if (b.equals("true")) {
+					System.out.println("false");
+				} else if (b.equals("false")) {
+					System.out.println("false");
+				}
+			} else if (op.equals("OR")) {
+				if (b.equals("true")) {
+					System.out.println("true");
+				} else if (b.equals("false")) {
+					System.out.println("false");
+				}
+			}
+		}
+		
+		
+	}
+
+}
