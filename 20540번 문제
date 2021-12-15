@@ -1,0 +1,35 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	
+		String str = br.readLine();
+		String love = "";
+		
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) == 'E')
+				love += 'I';
+			else if (str.charAt(i) == 'I')
+				love += 'E';
+			if (str.charAt(i) == 'S')
+				love += 'N';
+			else if (str.charAt(i) == 'N')
+				love += 'S';
+			if (str.charAt(i) == 'T')
+				love += 'F';
+			else if (str.charAt(i) == 'F')
+				love += 'T';
+			if (str.charAt(i) == 'J')
+				love += 'P';
+			else if (str.charAt(i) == 'P')
+				love += 'J';
+		}
+		
+		System.out.println(love);
+	}
+
+}
