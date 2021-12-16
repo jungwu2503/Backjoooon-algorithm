@@ -1,0 +1,35 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		boolean flag = false;
+		
+		while (true) {
+			st = new StringTokenizer(br.readLine());
+			String str = "";
+			
+			while (st.hasMoreTokens()) {
+				String tok = st.nextToken();
+				if (tok.equals("#")) {
+					flag = true;
+					break;
+				}
+				for (int i = tok.length()-1; i >= 0; i--) {
+					str += tok.charAt(i);
+				}
+				str += " ";
+			}
+			
+			if (flag) break;
+			
+			System.out.println(str);
+		}
+		
+	}
+
+}
