@@ -1,0 +1,42 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	
+		int n = Integer.parseInt(br.readLine());
+		StringTokenizer st;
+		
+		for (int i = 0 ; i < n; i++) {
+			st = new StringTokenizer(br.readLine());
+			
+			String name = st.nextToken();
+			int grade = Integer.parseInt(st.nextToken());
+			
+			if (grade >= 97 && grade <= 100)
+				System.out.println(name + " A+");
+			else if (grade >= 90 && grade <= 96)
+				System.out.println(name + " A");
+			else if (grade >= 87 && grade <= 89)
+				System.out.println(name + " B+");
+			else if (grade >= 80 && grade <= 86)
+				System.out.println(name + " B");
+			else if (grade >= 77 && grade <= 79)
+				System.out.println(name + " C+");
+			else if (grade >= 70 && grade <= 76)
+				System.out.println(name + " C");
+			else if (grade >= 67 && grade <= 69)
+				System.out.println(name + " D+");
+			else if (grade >= 60 && grade <= 66)
+				System.out.println(name + " D");
+			else if (grade <= 59)
+				System.out.println(name + " F");
+			
+		}
+		
+	}
+
+}
