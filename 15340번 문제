@@ -1,0 +1,31 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		
+		while (true) {
+			st = new StringTokenizer(br.readLine());
+			
+			int call = Integer.parseInt(st.nextToken());
+			int data = Integer.parseInt(st.nextToken());
+			
+			if (call == 0 && data == 0) break;
+			
+			int[] arr = new int[3];
+			arr[0] = call * 30 + data * 40;
+			arr[1] = call * 35 + data * 30;
+			arr[2] = call * 40 + data * 20;
+			
+			Arrays.sort(arr);
+			
+			System.out.println(arr[0]);
+		}
+		
+	}
+
+}
