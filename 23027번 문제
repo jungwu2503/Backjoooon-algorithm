@@ -1,0 +1,71 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		String str = br.readLine();
+		
+		boolean hasA = false;
+		boolean hasB = false;
+		boolean hasC = false;
+		
+		for (int i = 0; i < str.length(); i++) {
+			if (str.charAt(i) == 'A')
+				hasA = true;
+			if (str.charAt(i) == 'B')
+				hasB = true;
+			if (str.charAt(i) == 'C')
+				hasC = true;
+		}
+		
+		String tmp = "";
+		if (hasA) {
+			for (int i = 0; i < str.length(); i++) {
+				switch(str.charAt(i)) {
+					case 'B':
+					case 'C':
+					case 'D':
+					case 'F':
+						tmp+='A';
+						break;
+					default:
+						tmp+=str.charAt(i);
+				}
+			}
+		} else if (!hasA && hasB) {
+			for (int i = 0; i < str.length(); i++) {
+				switch(str.charAt(i)) {
+					case 'C':
+					case 'D':
+					case 'F':
+						tmp+='B';
+						break;
+					default:
+						tmp+=str.charAt(i);
+				}
+			}
+		} else if (!hasA && !hasB && hasC) {
+			for (int i = 0; i < str.length(); i++) {
+				switch(str.charAt(i)) {
+					case 'D':
+					case 'F':
+						tmp+='C';
+						break;
+					default:
+						tmp+=str.charAt(i);
+				}
+			}
+		} else if (!hasA && !hasB && !hasC) {
+			for (int i = 0; i < str.length(); i++) {
+				tmp+='A';
+			}
+		}
+		
+		System.out.println(tmp);
+	}
+
+}
