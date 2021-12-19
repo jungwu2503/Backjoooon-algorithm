@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		//StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		String str = br.readLine();
+		String ori = "";
+		
+		for (int i = 0; i < str.length(); i++) {
+			switch (str.charAt(i)) {
+				case 'A':
+					ori+='X';
+					break;
+				case 'B':
+					ori+='Y';
+					break;
+				case 'C':
+					ori+='Z';
+					break;
+				default:
+					ori+=(char)(str.charAt(i)-3);
+			}
+		}
+		System.out.println(ori);
+	}
+
+}
