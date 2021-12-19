@@ -1,0 +1,28 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int[] burger = new int[3];
+		int[] beverage = new int[2];
+		
+		for (int i = 0; i < 3; i++) {
+			burger[i] = Integer.parseInt(br.readLine());
+		}
+
+		for (int i = 0; i < 2; i++) {
+			beverage[i] = Integer.parseInt(br.readLine());
+		}
+		
+		Arrays.sort(burger);
+		Arrays.sort(beverage);
+		
+		System.out.println(burger[0] + beverage[0] - 50);
+		
+	}
+
+}
