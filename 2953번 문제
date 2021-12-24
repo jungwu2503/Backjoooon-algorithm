@@ -1,0 +1,31 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st;
+		
+		int[] cook = new int[5];
+		int num = -1;
+		int max = -1;
+		
+		for (int i = 0; i < 5; i++) {
+			st = new StringTokenizer(br.readLine());
+			while (st.hasMoreTokens()) {
+				cook[i] += Integer.parseInt(st.nextToken());
+			}
+			if (cook[i] > max) {
+				num = i+1;
+				max = cook[i];
+			}
+		}
+		
+		System.out.println(num + " " + max);
+		
+	}
+
+}
