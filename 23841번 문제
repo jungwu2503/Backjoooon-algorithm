@@ -1,0 +1,52 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		int n = Integer.parseInt(st.nextToken());
+		int m = Integer.parseInt(st.nextToken());
+		
+		String[] strArr = new String[n];
+		
+		for (int i = 0; i < n; i++) {
+			strArr[i] = br.readLine();
+		}
+		char[][] tmpArr = new char[n][m];
+		
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				tmpArr[i][j] = '.';				
+			}
+		}
+		
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m/2; j++) {
+				if (strArr[i].charAt(j) != '.' && strArr[i].charAt(m-j-1) == '.') {
+					tmpArr[i][j] = strArr[i].charAt(j);
+					tmpArr[i][m-j-1] = strArr[i].charAt(j);
+				}
+			}
+			for (int j = m-1; j >= 0; j--) {
+				if (strArr[i].charAt(j) != '.' && strArr[i].charAt(m-j-1) == '.') {
+					tmpArr[i][j] = strArr[i].charAt(j);
+					tmpArr[i][m-j-1] = strArr[i].charAt(j);
+				}
+			}
+		}
+		
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				System.out.print(tmpArr[i][j]);
+			}
+			System.out.println();
+		}
+		
+	}
+
+}
