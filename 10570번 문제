@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int n = Integer.parseInt(br.readLine());
+		
+		for (int i = 0; i < n; i++) {
+			int v = Integer.parseInt(br.readLine());
+			int[] arr = new int[1001];
+			
+			for (int j = 0; j < v; j++) {
+				arr[Integer.parseInt(br.readLine())]++;
+			}
+			int cnt = 0;
+			int index = 0;
+			for (int j = 0; j < 1001; j++) {
+				if (arr[j] > cnt) {
+					cnt = arr[j];
+					index = j;
+				}
+			}
+			
+			System.out.println(index);
+		}
+		
+	}
+
+}
