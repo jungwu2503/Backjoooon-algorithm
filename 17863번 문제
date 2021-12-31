@@ -1,0 +1,20 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		//StringTokenizer st = new StringTokenizer(br.readLine());
+
+		String s = br.readLine();
+		
+		if (s.charAt(0) == '5' && s.charAt(1) == '5' &&s.charAt(2) == '5')
+			System.out.println("YES");
+		else System.out.println("NO");
+		
+	}
+
+}
