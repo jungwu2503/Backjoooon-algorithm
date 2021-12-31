@@ -1,0 +1,74 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		char l_ms = st.nextToken().charAt(0);
+		char r_ms = st.nextToken().charAt(0);
+		char l_tk = st.nextToken().charAt(0);
+		char r_tk = st.nextToken().charAt(0);
+		boolean flag = false;
+		
+		if (l_ms == r_ms) {
+			switch (l_ms) {
+				case 'R': {
+					if (l_tk == 'P' || r_tk == 'P') {
+						System.out.println("TK");
+						flag = true;
+					}
+					break;
+				}
+				case 'S': {
+					if (l_tk == 'R' || r_tk == 'R') {
+						System.out.println("TK");
+						flag = true;
+					}
+					break;
+				}
+				case 'P': {
+					if (l_tk == 'S' || r_tk == 'S') {
+						System.out.println("TK");
+						flag = true;
+					}
+					break;
+				}		
+			}
+		}
+		if (l_tk == r_tk) {
+			switch (l_tk) {
+				case 'R': {
+					if (l_ms == 'P' || r_ms == 'P') {
+						System.out.println("MS");
+						flag = true;
+					}
+					break;
+				}
+				case 'S': {
+					if (l_ms == 'R' || r_ms == 'R') {
+						System.out.println("MS");
+						flag = true;
+					}
+					break;
+				}
+				case 'P': {
+					if (l_ms == 'S' || r_ms == 'S') {
+						System.out.println("MS");
+						flag = true;
+					}
+					break;
+				}		
+			}
+		}
+		if (!flag)
+			System.out.println("?");
+		
+		
+	}
+
+}
