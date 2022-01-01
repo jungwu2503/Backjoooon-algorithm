@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int t = Integer.parseInt(br.readLine());
+		//StringBuilder sb = new StringBuilder();
+		
+		while (t-- > 0) {
+			int n = Integer.parseInt(br.readLine());
+			String ans = "";
+			
+			for (int i = 1; i <= n/2+1; i++) {
+				if (i == n/2) {
+					if (i == n-i) {						
+						//ans.substring(0,ans.length()-1);
+						break;
+					}
+					ans += i + " ";
+					ans += n-i + "";
+					break;
+				}
+				if (i + n-i == n) {
+					ans += i + " ";
+					if (n % 2 == 0) {
+						if (i == n/2-1)
+							ans += n-i + " ";
+						else
+							ans += n-i + ", ";
+					} else {
+						if (i == n/2)
+							ans += n-i + " ";
+						else
+							ans += n-i + ", ";
+					}
+					
+				}
+			}
+			
+			System.out.println("Pairs for "+ n + ": " +ans);
+		}
+		
+	}
+
+}
