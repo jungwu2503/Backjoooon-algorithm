@@ -1,0 +1,55 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		
+		int n = Integer.parseInt(br.readLine());
+		
+		int[][] arr = new int[n][n];
+		
+		for (int i = 0; i < n; i++) {
+			st = new StringTokenizer(br.readLine());
+			for (int j = 0; j < n; j++) {
+				arr[i][j] = Integer.parseInt(st.nextToken());
+			}
+		}
+		
+		while (n != 1) {
+			n /= 2;
+			for (int i = 0; i < n; i++) {
+				for (int j = 0; j < n; j++) {
+					int[] temp = new int[4];
+					temp[0] = arr[2*i][2*j];
+					temp[1] = arr[2*i+1][2*j];
+					temp[2] = arr[2*i][2*j+1];
+					temp[3] = arr[2*i+1][2*j+1];
+					Arrays.sort(temp);
+					arr[i][j] = temp[2];
+				}
+			}
+		}
+		
+		System.out.println(arr[0][0]);
+		
+/*		for (int i = 0; i < n; i+=2) {
+			for (int j = 0; j < n; j+=2) {
+				int[] tmp = new int[4];
+				tmp[0] = arr[i][j];
+				tmp[1] = arr[i][j+1];
+				tmp[2] = arr[i+1][j];
+				tmp[3] = arr[i+1][j+1];
+				Arrays.sort(tmp);
+				arr[i][j] = tmp[2];
+				//System.out.println(tmp[2]);
+			}
+		} */
+		
+		
+	}
+	
+}
