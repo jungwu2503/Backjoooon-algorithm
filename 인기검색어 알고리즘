@@ -1,0 +1,66 @@
+import java.io.*;
+
+public class words {
+
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int nData = Integer.parseInt(br.readLine());
+		String word[] = new String[nData];
+		
+		for (int i = 0; i < nData; i++) {
+			word[i] = br.readLine();
+		}
+		
+		String winner = word[0];
+		int winCount = 1;
+		for (int i = 1; i < nData; i++) {
+			if (winner.equals(word[i])) {
+				winCount++;
+			} else if (winCount > 1) {
+				winCount--;
+			} else {
+				winner = word[i];
+				winCount = 1;
+			}
+		}
+		winCount = 0;
+		for (int i = 0; i < nData; i++) {
+			if (winner.equals(word[i])) {
+				winCount++;
+			}
+			if (winCount > nData/2) break;
+		}
+		if (winCount > nData/2) System.out.println(winner);
+		else System.out.println("NONE");
+		
+		/*int n = Integer.parseInt(br.readLine());
+		
+		String[] words = new String[n];
+		
+		for (int i = 0; i < n; i++) {
+			words[i] = br.readLine();
+		}
+		
+		String current = words[0];
+		int cnt = 1;
+		
+		for (int i = 1; i < n; i++) {
+			if (words[i].equals(current)) {
+				cnt++;
+			} else {
+				//if (cnt > 1)
+				cnt--;
+				if (cnt == 0) {
+					current = words[i];
+					cnt = 1;
+				}
+			}
+			//System.out.println(current + " " + cnt);
+		}
+		
+		System.out.println(current); */
+	}
+
+}
