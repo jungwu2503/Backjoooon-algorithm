@@ -1,0 +1,71 @@
+import java.io.*;
+
+public class FindingLostCard {
+
+	public static int sum(int n) {
+		return n * (n+1) / 2;
+	}
+	
+	public static int sumOfSquare(int n) {
+		int s = 0;
+		for (int i = 1; i <= n; i++) {
+			s += i*i;
+		}
+		return s;
+	}
+	
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int nData = Integer.parseInt(br.readLine());
+		int twoSum = sum(nData);
+		int twoSumSquare = sumOfSquare(nData);
+		
+		for (int i = 0; i < nData-2; i++) {
+			int x = Integer.parseInt(br.readLine());
+			twoSum -= x;
+			twoSumSquare -= x*x;
+		}
+		
+		int j = twoSum-1;
+		for (int i = 1; i <= twoSum/2; i++, j--) {
+			if (i > nData || j > nData) continue;
+			int y = i * i + j * j;
+			
+			if (y == twoSumSquare) {
+				System.out.println(i);
+				System.out.println(j);
+				break;
+			}
+			
+		}
+		
+		/*int n = Integer.parseInt(br.readLine());
+		int total = 0;
+		
+		for (int i = 1; i <= n; i++) {
+			total += i;
+		}
+		
+		int inputSum = 0;
+		int cnt = 0;
+		for (int i = 0; i < n; i++) {
+			
+			String input = br.readLine();
+			if (input.equals("")) break;
+			
+			inputSum += Integer.parseInt(input);
+			cnt++;			
+		}
+		
+		int remainNum = total - inputSum;
+		int remainCnt = n - cnt;
+		
+		for (int i = 1; i <= n; i++) {
+			
+		} */
+		
+	}
+
+}
