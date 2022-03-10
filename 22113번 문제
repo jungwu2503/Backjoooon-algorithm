@@ -1,0 +1,38 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		
+		st = new StringTokenizer(br.readLine());
+		
+		int totalBus = Integer.parseInt(st.nextToken());
+		int usingBus = Integer.parseInt(st.nextToken());
+		
+		int[] busOrder = new int[usingBus];
+		st = new StringTokenizer(br.readLine());
+		
+		for (int i = 0; i < usingBus; i++) {
+			busOrder[i] = Integer.parseInt(st.nextToken())-1;
+		}
+		
+		int[][] costGraph = new int[totalBus][totalBus];
+		for (int i = 0; i < totalBus; i++) {
+			st = new StringTokenizer(br.readLine());
+			for (int j = 0; j < totalBus; j++) {
+				costGraph[i][j] = Integer.parseInt(st.nextToken());
+			}
+		}
+		
+		int totalFee = 0;
+		for (int i = 0; i < busOrder.length-1; i++) {
+			totalFee += costGraph[busOrder[i]][busOrder[i+1]];
+		}
+		
+		System.out.println(totalFee);		
+	}		
+}
