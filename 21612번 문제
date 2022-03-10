@@ -1,0 +1,20 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int x = Integer.parseInt(br.readLine());
+		
+		int kpa = 5 * x - 400;
+		System.out.println(kpa);
+		if (kpa < 100) System.out.println("1");
+		else if (kpa == 100) System.out.println("0");
+		else System.out.println("-1");
+		
+	}
+	
+}
