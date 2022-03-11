@@ -1,0 +1,31 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		int len = Integer.parseInt(st.nextToken());
+		int cases = Integer.parseInt(st.nextToken());
+		
+		String part = br.readLine();
+		
+		for (int i = 0; i < cases; i++) {			
+			String pwd = br.readLine();
+			int partIndex = 0;
+			
+			for (int j = 0; j < pwd.length(); j++) {
+				if (partIndex == part.length()) break;
+				if (pwd.charAt(j) == part.charAt(partIndex)) {
+					partIndex++;
+				}
+			}
+			
+			System.out.println(partIndex == part.length() ? "true" : "false");			
+		}		
+	}		
+}
