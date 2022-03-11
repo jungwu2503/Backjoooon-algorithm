@@ -1,0 +1,55 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		while (true) {
+			String s = br.readLine();
+			if (s.charAt(0) == '#') break;
+			
+			int result = 0;
+			int index = s.length()-1;
+			
+			for (int i = 0; i < s.length(); i++) {
+				int value = 1;
+				switch (s.charAt(i)) {
+					case '-':
+						value = 0;
+						break;
+					case '\\':
+						value = 1;
+						break;
+					case '(':
+						value = 2;
+						break;
+					case '@':
+						value = 3;
+						break;
+					case '?':
+						value = 4;
+						break;
+					case '>':
+						value = 5;
+						break;
+					case '&':
+						value = 6;
+						break;
+					case '%':
+						value = 7;
+						break;	
+					case '/':
+						value = -1;
+						break;
+				}
+				result += value * Math.pow(8, index);		
+				index--;
+			}
+ 			System.out.println(result);
+		}
+		
+	}		
+}
