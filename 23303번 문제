@@ -1,0 +1,24 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		String s = br.readLine();
+		boolean hasD2 = false;
+		
+		for (int i = 0; i < s.length()-1; i++) {			
+			if (s.charAt(i) == 'D' || s.charAt(i) == 'd') {
+				if (s.charAt(i+1) == '2') {
+					hasD2 = true;
+					break;
+				}		
+			}			
+		}
+		
+		System.out.println(hasD2 ? "D2" : "unrated");
+	}		
+}
