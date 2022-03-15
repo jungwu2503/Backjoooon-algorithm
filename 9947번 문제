@@ -1,0 +1,34 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		
+		while (true) {
+			st = new StringTokenizer(br.readLine());
+			String[] name = new String[2];
+			
+			name[0] = st.nextToken();
+			name[1] = st.nextToken();
+			
+			if (name[0].charAt(0) == '#' && name[1].charAt(0) == '#') break;
+			
+			int n = Integer.parseInt(br.readLine());
+			int correct = 0;
+			int incorrect = 0;
+			
+			for (int i = 0; i < n; i++) {
+				st = new StringTokenizer(br.readLine());
+				if (st.nextToken().charAt(0) == st.nextToken().charAt(0)) correct++;
+				else incorrect++;
+			}
+			
+			System.out.println(name[0] + " " + correct + " " + name[1] + " " + incorrect);
+		}
+		
+	}		
+}
