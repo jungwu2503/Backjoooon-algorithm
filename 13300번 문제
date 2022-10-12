@@ -1,0 +1,56 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		int loopCnt = Integer.parseInt(st.nextToken());
+		int limitPerRoom = Integer.parseInt(st.nextToken());
+		int[] girlArr = new int[6];
+		int[] boyArr = new int[6];
+		int totalRoom = 0;
+
+		for (int i = 0; i < loopCnt; i++) {
+			st = new StringTokenizer(br.readLine());
+			int girlOrBoy = Integer.parseInt(st.nextToken());
+			int grade = Integer.parseInt(st.nextToken());
+			
+			switch(girlOrBoy) {
+				case 0: {
+					girlArr[grade-1]++;
+					break;
+				}
+				case 1: {
+					boyArr[grade-1]++;
+					break;
+				}
+			}
+		}
+		
+		for (int i = 0; i < 6; i++) {
+			if (girlArr[i] == 0) {				
+			} else if (girlArr[i] == 1) {
+				totalRoom++;
+			} else if (girlArr[i] % limitPerRoom == 0 ) {
+				totalRoom += girlArr[i] / limitPerRoom;
+			} else if (girlArr[i] % limitPerRoom == 1) {
+				totalRoom += girlArr[i] / limitPerRoom + 1;
+			}
+			
+			if (boyArr[i] == 0) {				
+			} else if (boyArr[i] == 1) {
+				totalRoom++;
+			} else if (boyArr[i] % limitPerRoom == 0 ) {
+				totalRoom += boyArr[i] / limitPerRoom;
+			} else if (boyArr[i] % limitPerRoom == 1) {
+				totalRoom += boyArr[i] / limitPerRoom + 1;
+			}
+			
+		}
+		
+		System.out.println(totalRoom);
+	}	
+}
