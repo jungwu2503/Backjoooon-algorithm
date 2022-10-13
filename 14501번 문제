@@ -1,0 +1,33 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		int days = Integer.parseInt(br.readLine());
+		StringTokenizer st; 
+		
+		int[] t = new int[days];
+		int[] p = new int[days];
+		
+		for (int i = 0; i < days; i++) {
+			st = new StringTokenizer(br.readLine());
+			
+			t[i] = Integer.parseInt(st.nextToken());
+			p[i] = Integer.parseInt(st.nextToken());
+		}
+		
+		int[] dp = new int[days+1];
+		
+		for (int i = 0; i < days; i++) {
+			if (i + t[i] <= days) {
+				dp[i+t[i]] = Math.max(dp[i + t[i]], dp[i] + p[i]);
+			}
+			dp[i+1] = Math.max(dp[i+1], dp[i]);
+		}
+		
+		System.out.println(dp[days]);
+	}	
+}
