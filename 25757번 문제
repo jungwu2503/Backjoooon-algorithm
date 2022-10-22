@@ -1,0 +1,44 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st; 		
+		st = new StringTokenizer(br.readLine());
+		
+		int n = Integer.parseInt(st.nextToken());
+		char game = st.nextToken().charAt(0);
+		
+		Set<String> nameSet = new HashSet<>();
+		
+		for (int i = 0; i < n; i++) {
+			nameSet.add(br.readLine());
+		}
+		
+		int setSize = nameSet.size();
+		
+		switch (game) {
+			case 'Y': {
+				System.out.println(setSize);
+				break;
+			}
+			case 'F': {
+				System.out.println(setSize/2);
+				break;
+			}
+			case 'O': {
+				System.out.println(setSize/3);
+				break;
+			}
+		}
+		
+		/*Iterator<String> iterator = nameSet.iterator();
+		while (iterator.hasNext()) {
+			System.out.println(iterator.next());
+		}*/
+		
+	}	
+}
