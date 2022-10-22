@@ -1,0 +1,87 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st;
+		
+		int n = Integer.parseInt(br.readLine()); 		
+		st = new StringTokenizer(br.readLine());
+		
+		String[] gArr = new String[n];
+		for (int i = 0; i < n; i++) {
+			gArr[i] = st.nextToken();
+		}
+		
+		Set<Character> charSet = new HashSet<>();
+		
+		for (int i = 0; i < n; i++) {
+			for (int j = i+1; j < n; j++) {
+				charSet.add(gArr[i].charAt(0) > gArr[j].charAt(1) ? gArr[i].charAt(0) : gArr[j].charAt(1));
+				charSet.add(gArr[i].charAt(1) > gArr[j].charAt(0) ? gArr[i].charAt(1) : gArr[j].charAt(0));
+			}
+		}
+		
+		ArrayList<Character> setToList = new ArrayList<>(charSet);
+		Collections.sort(setToList);
+		
+		Iterator<Character> iterator = setToList.iterator();
+		while (iterator.hasNext()) {
+			System.out.print(iterator.next() + " ");
+		}
+		
+		
+		/*BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st;
+		
+		int n = Integer.parseInt(br.readLine()); 		
+		st = new StringTokenizer(br.readLine());
+		
+		String[] gArr = new String[n+1];
+		for (int i = 0; i < n; i++) {
+			gArr[i] = st.nextToken();
+		}
+		gArr[n] = "@@";
+		
+		Set<Character> charSet = new HashSet<>();
+		
+		for (int i = 0; i < n; i++) {
+			charSet.add(gArr[i].charAt(0) > gArr[i+1].charAt(1) ? gArr[i].charAt(0) : gArr[i+1].charAt(1));
+			charSet.add(gArr[i].charAt(1) > gArr[i+1].charAt(0) ? gArr[i].charAt(1) : gArr[i+1].charAt(0));
+			System.out.print(gArr[i].charAt(0) > gArr[i+1].charAt(1) ? gArr[i].charAt(0) : gArr[i+1].charAt(1));
+			System.out.print("   ");
+			System.out.println(gArr[i].charAt(1) > gArr[i+1].charAt(0) ? gArr[i].charAt(1) : gArr[i+1].charAt(0));
+		}
+		
+		//for (int i = 0; i < n; i++) {
+		//	for (int j = 0; j < n; j++) {
+		//		if (i != j) {
+		//			charSet.add(gArr[i].charAt(0) > gArr[j].charAt(1) ? gArr[i].charAt(0) : gArr[j].charAt(1));
+		//			charSet.add(gArr[i].charAt(1) > gArr[j].charAt(0) ? gArr[i].charAt(0) : gArr[j].charAt(1));
+		//		}
+		//	}
+		//}
+		
+		ArrayList<Character> setToList = new ArrayList<>(charSet);
+		Collections.sort(setToList);
+		
+		Iterator<Character> iterator = setToList.iterator();
+		while (iterator.hasNext()) {
+			System.out.print(iterator.next() + " ");
+		}
+		
+		//Collections.sort(charSet<Character>);
+		
+		//Iterator<Character> iterator = charSet.iterator();
+		//while (iterator.hasNext()) {
+		//	System.out.print(iterator.next() + " ");
+		//}
+		*/
+		
+	}	
+} 
