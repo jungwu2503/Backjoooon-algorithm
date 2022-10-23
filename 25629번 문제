@@ -1,0 +1,26 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int n = Integer.parseInt(br.readLine());
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		int odd = 0;
+		int even = 0;
+		
+		for (int i = 0; i < n; i++) {
+			int nextNum = Integer.parseInt(st.nextToken());
+			if (nextNum % 2 == 1) odd++;
+			else even++;
+		}
+
+		if (odd == even || odd == even + 1) System.out.println("1");
+		else System.out.println("0");
+		
+	}	
+}
