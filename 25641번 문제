@@ -1,0 +1,34 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int n = Integer.parseInt(br.readLine());
+		String input = br.readLine();
+		
+		int s = 0;
+		int t = 0;
+		
+		for (int i = 0; i < n; i++) {
+			if (input.charAt(i) == 's') s++;
+			else if (input.charAt(i) == 't') t++;
+		}
+		
+		String currentST = input;
+		
+		for (int i = 0; i < n; i++) {
+			if (s == t) break;
+			if (input.charAt(i) == 's') s--;
+			else if (input.charAt(i) == 't') t--;
+			currentST = input.substring(i+1);
+		}
+		
+		//System.out.println("/////" + s + " " + t);
+		System.out.println(currentST);
+		
+	}	
+}
