@@ -1,0 +1,26 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st;
+				
+		st = new StringTokenizer(br.readLine());
+		
+		int bread = Integer.parseInt(st.nextToken());
+		int patty = Integer.parseInt(st.nextToken());
+		
+		bread = bread / 2;
+		
+		int hamb = 0;
+		
+		if (bread >= patty) hamb = patty;
+		else hamb = bread;
+		
+		System.out.println(hamb);
+	}	
+}
