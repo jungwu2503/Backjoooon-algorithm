@@ -1,0 +1,54 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		int totalLayer = Integer.parseInt(st.nextToken());
+		int length = Integer.parseInt(st.nextToken());
+		
+		String previousFloor = br.readLine(); //first floor
+		boolean OKFlag = true;
+		
+		for (int i = 0; i < totalLayer - 1; i++) {
+			String currentFloor = br.readLine();
+			
+			for (int j = 0; j < length; j++) {
+				//if (j == length * 2 - 2 && !OKFlag) break;
+				
+				//System.out.print(previousFloor.substring(length-j-1) + "//////");
+				//System.out.println(currentFloor.substring(0, j+1));
+				if (previousFloor.substring(length-j-1).equals(currentFloor.substring(0, j+1))) {
+					previousFloor = currentFloor;
+					OKFlag = true;
+					break;
+				}			
+				OKFlag = false;				
+			}
+			if (!OKFlag) {
+				for (int j = 0; j < length-1; j++) {
+					//System.out.print(currentFloor.substring(length-j-1) + "//////");
+					//System.out.println(previousFloor.substring(0, j+1));
+					if (currentFloor.substring(length-j-1).equals(previousFloor.substring(0, j+1))) {
+						previousFloor = currentFloor;
+						OKFlag = true;
+						break;
+					}			
+					OKFlag = false;	
+				}
+			}
+			
+			if (!OKFlag) {
+				break;
+			}			
+		}
+
+		if (OKFlag) System.out.println("1");
+		else System.out.println("0");
+		
+	}	
+}
