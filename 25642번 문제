@@ -1,0 +1,28 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		int yt = Integer.parseInt(st.nextToken());
+		int yj = Integer.parseInt(st.nextToken());
+		
+		if (yt + yj >= 5) System.out.println("yt");
+		else {
+			for (int i = 0; ; i++) {
+				if (i % 2 == 0) yj += yt;
+				else yt += yj;
+				if (yt >= 5 || yj >= 5) {
+					System.out.println(yt > yj ? "yj" : "yt");
+					break;
+				}
+			}
+		}		
+		
+	}	
+}
