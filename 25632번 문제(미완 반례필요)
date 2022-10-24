@@ -1,0 +1,63 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st;
+		
+		boolean[] prime = new boolean[1001];
+		
+		prime[0] = prime[1] = true;
+		
+		for(int i = 2; i <= Math.sqrt(1001); i++) {	        
+			if(prime[i] == true) {
+				continue;
+			}        
+			for(int j = i * i; j < prime.length; j = j+i) {
+				prime[j] = true;
+			}
+		}		
+		
+		st = new StringTokenizer(br.readLine());
+		int Range_A = Integer.parseInt(st.nextToken());
+		int Range_B = Integer.parseInt(st.nextToken());
+		
+		st = new StringTokenizer(br.readLine());
+		int Range_C = Integer.parseInt(st.nextToken());
+		int Range_D = Integer.parseInt(st.nextToken());
+		
+/*		int yt_cnt = 0;
+		int yj_cnt = 0;
+		
+		for (int i = Range_A; i <= Range_B; i++) {
+			if (!prime[i]) yt_cnt++;
+		}
+		for (int i = Range_C; i <= Range_D; i++) {
+			if (!prime[i]) yj_cnt++;
+		}*/
+		
+		int duplicate = 0;
+		int aToC = 0;
+		int bToD = 0;
+		for (int i = Range_C; i <= Range_B; i++) {
+			if (!prime[i]) duplicate++;
+		}
+		for (int i = Range_A; i < Range_C; i++) {
+			if (!prime[i]) aToC++;
+		}
+		for (int i = Range_B; i < Range_D; i++) {
+			if (!prime[i]) bToD++;
+		}		
+		
+		if (duplicate % 2 == 1) aToC++;
+		else bToD++;
+		
+		//System.out.println(aToC + " " + bToD);
+		System.out.println(aToC > bToD ? "yt" : "yj");
+		
+	}	
+}
