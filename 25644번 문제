@@ -1,0 +1,89 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int n = Integer.parseInt(br.readLine());
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		int ans = 0;
+		int min = Integer.MAX_VALUE;
+		
+		for (int i = 0; i < n; i++) {
+			int cur = Integer.parseInt(st.nextToken());
+			ans = Math.max(ans, cur-min);
+			min = Math.min(min, cur);
+		}
+		System.out.println(ans);
+		
+		/* int[] arr = new int[n];
+		int highest = Integer.MIN_VALUE;
+		for (int i = 0; i < n; i++) {
+			arr[i] = Integer.parseInt(st.nextToken());
+			if (arr[i] > highest) highest = arr[i];
+		}
+		
+		int maxProfit = 0;
+		for (int i = n-1; i >= 0; i--) {
+			if (highest - arr[i] > maxProfit) maxProfit = highest - arr[i];
+		}
+		
+		System.out.println(maxProfit); */
+		
+		/*
+		int maxProfit = 0;
+		int[] arr = new int[n];
+		int lowest = Integer.MAX_VALUE;
+		int lowestIdx = 0;
+		
+		for (int i = 0; i < n; i++) {
+			arr[i] = Integer.parseInt(st.nextToken());
+			if (arr[i] < lowest) {
+				lowestIdx = i;
+				lowest = arr[i];
+			}
+		}
+		
+		int[] dupArr = arr.clone();
+		Arrays.sort(dupArr);
+		int highest = dupArr[n-1];
+		
+		for (int i = 0; i < highest; i++) {
+			if (highest-arr[i] >= maxProfit) maxProfit = highest-arr[i];
+		}
+		System.out.println(highest + " " + lowest);
+		System.out.println(maxProfit);
+		for (int i = lowestIdx; i < n-1; i++) {
+			if (arr[i] == highest) {
+				maxProfit = highest - lowest;
+				break;
+			}
+			if (arr[i+1] - arr[i] > maxProfit) maxProfit = arr[i+1] - arr[i];
+		}
+		
+		System.out.println(highest + " " + lowest);
+		System.out.println(maxProfit);
+		*/
+		
+		/*int maxProfit = 0;
+		int[] arr = new int[n];
+		
+		for (int i = 0; i < n; i++) {
+			arr[i] = Integer.parseInt(st.nextToken());
+		}
+		
+		for (int i = 0; i < n-1; i++) {
+			for (int j = i+1; j < n; j++) {
+				if (arr[i] >= arr[j]) continue;
+				if (arr[j] - arr[i] > maxProfit) maxProfit = arr[j] - arr[i];
+			}
+		}
+		
+		System.out.println(maxProfit); */
+		
+	}	
+}
