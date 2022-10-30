@@ -1,0 +1,69 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		//StringTokenizer st = new StringTokenizer(br.readLine());
+		int n = Integer.parseInt(br.readLine());
+		String str = br.readLine();
+		boolean hasUnder = false;
+		
+		if (str.charAt(n-2) == 'h') {
+			switch (str.charAt(n-1)) {
+				case 'k' : 
+				case 'o' : 
+				case 'l' : {
+					hasUnder= true;
+					break;
+				}
+			}
+		}
+		else if (str.charAt(n-2) == 'n') {
+			switch (str.charAt(n-1)) {
+				case 'j' : 
+				case 'p' : 
+				case 'l' : {
+					hasUnder= true;
+					break;
+				}
+			}
+		}
+		else if (str.charAt(n-2) == 'm') {
+			switch (str.charAt(n-1)) {
+				case 'l' : {
+					hasUnder= true;
+					break;
+				}
+			}
+		}
+		else {		
+			switch (str.charAt(n-1)) {
+				case 'k' : 
+				case 'o' : 
+				case 'i' : 
+				case 'O' : 
+				case 'j' : 
+				case 'p' : 
+				case 'u' : 
+				case 'P' : 
+				case 'h' : 			
+				case 'y' : 
+				case 'n' :  
+				case 'b' : 
+				case 'm' :  
+				case 'l' : {
+					hasUnder= true;
+					break;
+				}
+			}
+		}
+		
+		if (hasUnder) System.out.println("0");
+		else System.out.println("1");
+				
+	}	
+}
