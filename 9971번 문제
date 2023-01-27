@@ -1,0 +1,43 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		//StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		char[] plainText = new char[26];
+		
+		for (int i = 0; i < 26; i++) {
+			if (i < 5) {
+				plainText[i] = (char)('V'+i);
+			}
+			else {
+				plainText[i] = (char)('A'+i-5);
+			}
+		}
+		
+		while (true) {
+			String input = br.readLine();
+			if (input.equals("ENDOFINPUT")) break;
+			else if (input.equals("END")) continue;
+			else if (input.equals("START")) {
+				String s = br.readLine();
+				String output = "";
+				
+				for (int i = 0; i < s.length(); i++) {
+					if (s.charAt(i) >= 'A' && s.charAt(i) <= 'Z') {
+						output += plainText[s.charAt(i)-'A'];
+					}
+					else 
+						output += s.charAt(i);
+				}
+				System.out.println(output);
+			}
+		}
+		
+	}	
+}
