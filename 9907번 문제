@@ -1,0 +1,21 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		String s = br.readLine();
+		int sum = 0;
+		int[] nice = {2,7,6,5,4,3,2};
+		char[] res = {'J','A','B','C','D','E','F','G','H','I','Z'};
+		
+		for (int i = 0; i < 7; i++) {
+			sum += (int)(s.charAt(i)-'0') * nice[i];
+		}
+		
+		System.out.println(res[sum%11]);
+	}	
+}
