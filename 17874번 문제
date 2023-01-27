@@ -1,0 +1,22 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		int n = Integer.parseInt(st.nextToken());
+		int h = Integer.parseInt(st.nextToken());
+		int v = Integer.parseInt(st.nextToken());
+		
+		int maxH = (n-h) > h ? n-h : h;
+		int maxV = (n-v) > v ? n-v : v;
+		
+		System.out.println(4 * maxH * maxV);
+		
+	}	
+}
