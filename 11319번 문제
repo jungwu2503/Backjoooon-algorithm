@@ -1,0 +1,76 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int n = Integer.parseInt(br.readLine());
+		int consonants = 0;
+		int vowels = 0;
+		
+		for (int i = 0; i < n; i++) {
+			String s = br.readLine();
+			
+			for (int j = 0; j < s.length(); j++) {
+				if (s.charAt(j) >= 'A' && s.charAt(j) <= 'Z') {
+					switch (s.charAt(j)) {
+						case 'A': {
+							vowels++;
+							break;
+						}
+						case 'E': {
+							vowels++;
+							break;
+						}
+						case 'I': {
+							vowels++;
+							break;
+						}
+						case 'O': {
+							vowels++;
+							break;
+						}
+						case 'U': {
+							vowels++;
+							break;
+						}
+						default:
+							consonants++;
+					}
+				}
+				if (s.charAt(j) >= 'a' && s.charAt(j) <= 'z') {
+					switch (s.charAt(j)) {
+						case 'a': {
+							vowels++;
+							break;
+						}
+						case 'e': {
+							vowels++;
+							break;
+						}
+						case 'i': {
+							vowels++;
+							break;
+						}
+						case 'o': {
+							vowels++;
+							break;
+						}
+						case 'u': {
+							vowels++;
+							break;
+						}
+						default:
+							consonants++;
+					}
+				}
+			}
+			
+			System.out.println(consonants + " " + vowels);
+			consonants = vowels = 0;
+		}		
+	}	
+}
