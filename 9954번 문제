@@ -1,0 +1,50 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		while (true) {
+			String input = br.readLine();
+			String output = "";
+			if (input.equals("#")) break;
+			
+			char finalLetter = input.charAt(input.length()-1);
+			
+			char[] upperCipher = new char[26];
+			char[] lowerCipher = new char[26];
+			
+			int zeroIndex = 0;
+			for (int i = 0; i < upperCipher.length; i++) {
+				if ((finalLetter-'A')+i < 26) {
+					upperCipher[(finalLetter-'A')+i] = (char)('A'+i);
+					lowerCipher[(finalLetter-'A')+i] = (char)('a'+i);
+				} else {
+					upperCipher[zeroIndex] = (char)('A'+i);
+					lowerCipher[zeroIndex] = (char)('a'+i);
+					zeroIndex++;
+				}
+			}
+			
+			
+			for (int i = 0; i < input.length()-1; i++) {
+				char inputChar = input.charAt(i);
+				if (inputChar >= 'A' && inputChar <= 'Z') {
+					output += upperCipher[(int)(inputChar-'A')];
+				}
+				else if (inputChar >= 'a' && inputChar <= 'z') {
+					output += lowerCipher[(int)(inputChar-'a')];
+				}
+				else {
+					output += inputChar;
+				}
+			}
+			
+			System.out.println(output);
+		}
+		
+	}	
+}
