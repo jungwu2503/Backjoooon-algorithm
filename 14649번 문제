@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		int[] stones = new int[100];
+		
+		int estate = Integer.parseInt(br.readLine());
+		int n = Integer.parseInt(br.readLine());
+		
+		StringTokenizer st;
+		
+		for (int i = 0; i < n; i++) {
+			st = new StringTokenizer(br.readLine());
+			
+			int position = Integer.parseInt(st.nextToken());
+			String direction = st.nextToken();
+			
+			if (direction.equals("R")) {
+				for (int j = position; j < stones.length; j++) {
+					stones[j]++;
+				}
+			} else if (direction.equals("L")) {
+				for (int j = position - 2; j >= 0; j--) {
+					stones[j]++;
+				}
+			}			
+		}
+		
+		int blue = 0;
+		int red = 0;
+		int green = 0;
+		
+		for (int i = 0; i < stones.length; i++) {
+			if (stones[i] % 3 == 0) blue++;
+			else if (stones[i] % 3 == 1) red++;
+			else green++;
+		}
+
+		System.out.println(String.format("%.2f", (double)estate*blue/100));
+		System.out.println(String.format("%.2f", (double)estate*red/100));
+		System.out.println(String.format("%.2f", (double)estate*green/100));
+				
+	}	
+}
