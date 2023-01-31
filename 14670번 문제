@@ -1,0 +1,65 @@
+import java.io.*;
+import java.util.*;
+import java.util.Map.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+		
+		int numOfMedicine = Integer.parseInt(br.readLine());
+		
+		HashMap<Integer, Integer> medicine = new HashMap<>();
+		
+		StringTokenizer st;
+		
+		for (int i = 0; i < numOfMedicine; i++) {
+			st = new StringTokenizer(br.readLine());
+			int effect = Integer.parseInt(st.nextToken());
+			int name = Integer.parseInt(st.nextToken());
+			medicine.put(effect, name);
+		}
+		
+		int symptoms = Integer.parseInt(br.readLine());
+		
+		for (int i = 0; i < symptoms; i++) {
+			st = new StringTokenizer(br.readLine());
+			int numOfCase = Integer.parseInt(st.nextToken());
+			
+			for (int j = 0; j < numOfCase; j++) {
+				int cases = Integer.parseInt(st.nextToken());
+				
+				if (medicine.containsKey(cases)) sb.append(medicine.get(cases) + " "); //System.out.print(medicine.get(cases) + " ");
+				else {
+					sb.setLength(0);
+					sb.append("YOU DIED"); //System.out.println("YOU DIED");
+					break;
+				}
+				//int k = 0;
+				//for (Entry<Integer, Integer> entry : medicine.entrySet()) {
+				//	if (entry.getKey() == cases) {
+				//		System.out.print(entry.getValue() + " ");
+				//	}
+				//	if (k > numOfMedicine)
+				//		System.out.print("YOU DIED");
+				//}
+			}
+			
+			//for (int j = 0; j < numOfCase; j++) {
+			//	Integer token = medicine.get(Integer.parseInt(st.nextToken()));
+			//	if (medicine.containsKey(token))
+			//		System.out.print(token + " ");
+			//	else {
+			//		System.out.print("YOU DIED");
+			//		break;
+			//	}
+			//}
+			//sb.append("\n");
+			System.out.println(sb);
+			sb.setLength(0);
+		}	
+		//System.out.println(sb);
+	}	
+}
