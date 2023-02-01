@@ -1,0 +1,32 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+
+		st = new StringTokenizer(br.readLine());
+		int[] room = new int[3];
+		
+		for (int i = 0; i < room.length; i++) {
+			room[i] = Integer.parseInt(st.nextToken());
+		}
+		
+		int total = Integer.parseInt(st.nextToken());
+		
+		boolean flag = false;
+		for (int i = 2; i >= 0; i--) {
+			if (total > room[i]) total %= room[i];
+			if (total%room[i] == 0) {
+				flag = true;
+				break;
+			}
+		}
+		
+		if (flag) System.out.println("1");
+		else System.out.println("0");
+	}	
+}
