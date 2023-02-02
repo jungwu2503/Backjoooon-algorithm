@@ -1,0 +1,95 @@
+import java.io.*;
+import java.util.*;
+
+class Position {
+	int x;
+	int y;
+	int magic;
+	Position(int x, int y, int magic) {
+		this.x = x;
+		this.y = y;
+		this.magic = magic;
+	}
+}
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		int[] dx = {0, 1, 0, -1};
+		int[] dy = {-1, 0, 1, 0};
+
+		st = new StringTokenizer(br.readLine());
+		int n = Integer.parseInt(st.nextToken());
+		int m = Integer.parseInt(st.nextToken());
+		
+		st = new StringTokenizer(br.readLine()); // 시작 위치
+		int sX = Integer.parseInt(st.nextToken())-1; // <= x가 1,1이라 치면 0,0부터 시작하므로 -1씩
+		int sY = Integer.parseInt(st.nextToken())-1;
+		
+		st = new StringTokenizer(br.readLine()); // 끝 위치
+		int eX = Integer.parseInt(st.nextToken())-1;
+		int eY = Integer.parseInt(st.nextToken())-1;
+		
+		int[][] map = new int[n][m];
+		for (int i = 0; i < n; i++) {
+			st = new StringTokenizer(br.readLine());
+			for (int j = 0; j < m; j++) {
+				map[i][j] = Integer.parseInt(st.nextToken());
+			}
+		}
+		
+		Queue<Position> queue = new ArrayDeque<Position>();
+		boolean[][][] visited = new boolean[2][n][m];
+		
+		queue.add(new Position(sX,sY,0));
+		visited[0][sX][sY] = true;
+		int time = 0;
+		boolean isDone = false;
+		
+		while (!queue.isEmpty()) {
+			time++;
+			
+			int size = queue.size();
+			while (size-- > 0) {
+				Position currentPosition = queue.poll();
+			
+				for (int i = 0; i < 4; i++) {
+					int x = currentPosition.x + dx[i];
+					int y = currentPosition.y + dy[i];
+					
+					if (x < 0 || y < 0 || x >= n || y >= m) continue; // 맵 바깥판정
+					if (map[x][y] == 1) { // wall?
+						if (currentPosition.magic == 0 && !visited[currentPosition.magic+1][x][y]) { // 마법사용 x, 아직 방문 x
+							visited[currentPosition.magic+1][x][y] = true;
+							if (x == eX && y == eY) {
+								isDone = true;
+								break;
+							}
+							queue.add(new Position(x, y, currentPosition.magic+1));
+						}
+					}
+					else {
+						if (!visited[currentPosition.magic][x][y]) {
+							visited[currentPosition.magic][x][y] = true;
+							if (x == eX && y == eY) {
+								isDone = true;
+								break;
+							}
+							queue.add(new Position(x, y, currentPosition.magic));
+						}
+					}				
+				}
+				if (isDone) break;
+			}
+			if (isDone) {
+				System.out.println(time);
+				break;
+			}
+		}
+		if (!isDone) 
+			System.out.println("-1");
+	}	
+}
