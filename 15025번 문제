@@ -1,0 +1,23 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		
+		int x = Integer.parseInt(st.nextToken());
+		int y = Integer.parseInt(st.nextToken());
+		
+		if (x == 0 && y == 0) System.out.println("Not a moose");
+		else if (x == y) System.out.println("Even " + (x+y));
+		else {
+			if (x > y)
+				System.out.println("Odd " + (x*2));			
+			else
+				System.out.println("Odd " + (y*2));
+		}
+	}	
+}
