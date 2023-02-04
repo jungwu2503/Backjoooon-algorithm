@@ -1,0 +1,50 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		StringTokenizer st;
+		st = new StringTokenizer(br.readLine());
+		
+		int fHour = Integer.parseInt(st.nextToken());
+		st.nextToken();
+		int fMin = Integer.parseInt(st.nextToken());
+		st.nextToken();
+		int fSec = Integer.parseInt(st.nextToken());
+		
+		st = new StringTokenizer(br.readLine());
+		
+		int lHour = Integer.parseInt(st.nextToken());
+		st.nextToken();
+		int lMin = Integer.parseInt(st.nextToken());
+		st.nextToken();
+		int lSec = Integer.parseInt(st.nextToken());
+		
+		int sCnt = 0;
+		int mCnt = 0;
+		int hCnt = 0;
+		
+		if (lSec < fSec) {
+			sCnt = 60 + lSec - fSec;
+			lMin--;			
+		}
+		else sCnt = lSec - fSec;
+		
+		
+		if (lMin < fMin) {
+			mCnt += 60 + lMin - fMin;
+			lHour--;
+		}
+		else mCnt += lMin - fMin;
+		
+		if (lHour < fHour) {
+			hCnt += 24 - fHour + lHour;
+		}
+		else hCnt += lHour - fHour;
+		
+		System.out.println(hCnt*3600+mCnt*60+sCnt);
+	}	
+}
