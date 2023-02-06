@@ -1,0 +1,74 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		
+		/*st = new StringTokenizer(br.readLine());
+		int n = Integer.parseInt(st.nextToken());
+		int maxWeight = Integer.parseInt(st.nextToken());
+		
+		int[][] dp = new int[101][100001];
+		int[][] item = new int[101][2];
+		
+		for (int i = 1; i <= n; i++) {
+			st = new StringTokenizer(br.readLine());
+			item[i][0] = Integer.parseInt(st.nextToken());
+			item[i][1] = Integer.parseInt(st.nextToken());
+		}
+		
+		for (int i = 1; i <= n; i++) {
+			for (int j = 1; j <= maxWeight; j++) {
+				if (item[i][0] <= j) {
+					if ((item[i][1] + dp[i-1][j-item[i][0]]) > dp[i-1][j]) {
+						dp[i][j] = item[i][1] + dp[i-1][j-item[i][0]];
+					}
+					else dp[i][j] = dp[i-1][j];
+					
+					System.out.print(dp[i][j] + " ");
+				}
+				else
+					dp[i][j] = dp[i-1][j];
+				
+				System.out.print(dp[i][j] + " ");
+			}
+			System.out.println();
+		}
+		
+		//System.out.println(dp[n][maxWeight]);
+		*/
+		int n = Integer.parseInt(br.readLine());
+		
+		for (int i = 0; i < n; i++) {
+			st = new StringTokenizer(br.readLine());
+			int count = Integer.parseInt(st.nextToken());
+			int maxWeight = Integer.parseInt(st.nextToken()) + Integer.parseInt(st.nextToken());
+			
+			st = new StringTokenizer(br.readLine()); 
+			int[][] item = new int[count+1][2];
+			for (int j = 1; j <= count; j++) item[j][0] = Integer.parseInt(st.nextToken());
+			
+			st = new StringTokenizer(br.readLine());
+			for (int j = 1; j <= count; j++) item[j][1] = Integer.parseInt(st.nextToken());
+			
+			int[][] dp = new int[101][2001];
+			for (int row = 1; row <= count; row++) {
+				for (int col = 1; col <= maxWeight; col++) {
+					if (item[row][0] <= col) {
+						if (item[row][1] + dp[row-1][col-item[row][0]] > dp[row-1][col])
+							dp[row][col] = item[row][1] + dp[row-1][col-item[row][0]];
+						else dp[row][col] = dp[row-1][col];
+					} 
+					else {
+						dp[row][col] = dp[row-1][col];
+					}
+				}
+			}
+			System.out.println("Problem " + (i+1) + ": " + dp[count][maxWeight]);
+		}
+		
+	}	
+}
