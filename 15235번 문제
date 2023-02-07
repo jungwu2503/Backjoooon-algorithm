@@ -1,0 +1,49 @@
+import java.io.*;
+import java.util.*;
+
+class Data {
+	int piece;
+	int index;
+	Data(int piece, int index) {
+		this.piece = piece;
+		this.index = index;
+	}
+}
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		
+		int n = Integer.parseInt(br.readLine());
+		st = new StringTokenizer(br.readLine());
+		
+		Queue<Data> queue = new ArrayDeque<Data>();
+		
+		int index = 0;
+		while (st.hasMoreTokens()) {
+			queue.add(new Data(Integer.parseInt(st.nextToken()), index++));
+		}
+		
+		int count = 0;
+		int[] timeArr = new int[n];
+		while (!queue.isEmpty()) {
+			count++;
+			
+			Data head = queue.poll();
+			if (head.piece != 1) {
+				head.piece--;
+				queue.add(head);
+			}
+			else if (head.piece == 1) {
+				timeArr[head.index] = count;
+			}
+		}
+		
+		for (int i = 0; i < n; i++) {
+			System.out.print(timeArr[i] + " ");
+		}
+		
+	}	
+}
