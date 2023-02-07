@@ -1,0 +1,54 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+
+	public static void main(String[] args) throws Exception {		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		
+		st = new StringTokenizer(br.readLine());
+		int a = Integer.parseInt(st.nextToken());
+		int b = Integer.parseInt(st.nextToken());
+		int scorer = Integer.parseInt(st.nextToken());
+		
+		String[] teamA = new String[a];
+		String[] teamB = new String[b];
+		
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < a; i++) {
+			teamA[i] = st.nextToken();
+		}
+		
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < b; i++) {
+			teamB[i] = st.nextToken();
+		}
+		
+		int scoreA = 0;
+		int scoreB = 0;
+		st = new StringTokenizer(br.readLine());
+		for (int i = 0; i < scorer; i++) {
+			String player = st.nextToken();
+			for (int j = 0; j < a; j++) {
+				if (player.equals(teamA[j])) {
+					scoreA++;
+					break;
+				}
+			}
+			for (int j = 0; j < b; j++) {
+				if (player.equals(teamB[j])) {
+					scoreB++;
+					break;
+				}
+			}
+		}
+		
+		if (scoreA > scoreB)
+			System.out.println("A");
+		if (scoreA < scoreB)
+			System.out.println("B");
+		if (scoreA == scoreB)
+			System.out.println("TIE");
+	}	
+}
