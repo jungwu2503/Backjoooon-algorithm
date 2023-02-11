@@ -1,0 +1,297 @@
+import java.io.*;
+import java.util.*;
+
+class Position {
+	int currentX;
+	int currentY;
+	int count;
+	Position(int x, int y, int c) {
+		currentX = x;
+		currentY = y;
+		count = c;
+	}
+}
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		//StringBuilder sb = new StringBuilder();
+		
+		st = new StringTokenizer(br.readLine());
+		
+		int row = Integer.parseInt(st.nextToken());
+		int col = Integer.parseInt(st.nextToken());
+		
+		char[][] map = new char[row+1][col+1];
+		boolean[][] visited = new boolean[row+1][col+1];
+		
+		for (int i = 0; i < row; i++) {
+			String input = br.readLine();
+			for (int j = 0; j < col; j++) {
+				map[i][j] = input.charAt(j);
+			}
+		}
+		
+		//Queue<Position> queue = new ArrayDeque<Position>();
+		Stack<Position> stack = new Stack<Position>();
+		stack.add(new Position(0,0,0));
+		int shortestTime = row + col - 1;
+		
+		int count = 0;
+		
+		int time = 0;
+		
+		//boolean isPoped = false;
+		//Position poped = null;
+		
+		while (!stack.isEmpty()) {
+			Position currentPos = stack.peek();
+			int x = currentPos.currentX;
+			int y = currentPos.currentY;
+			int c = currentPos.count;
+						
+			/*if (x == 0 && y == 0) {
+				time = 0;
+			}*/
+						
+			/*if (map[x+1][y] == 'X' || x+1 == row) {
+				visited[x+1][y] = true;
+				currentPos.count++;
+			}
+			if (map[x][y+1] == 'X' || y+1 == col) {
+				visited[x][y+1] = true;
+				currentPos.count++;
+			}*/
+			//if (poped != null) visited[poped.currentX][poped.currentY] = false;
+				
+			if (map[x][y+1] == '.' && !visited[x][y+1]) {
+				time++;
+				stack.add(new Position(x, y+1, 0));
+				visited[x][y+1] = true;
+				//currentPos.count++;
+			}
+			else if (map[x+1][y] == '.' && !visited[x+1][y]) {
+				time++;
+				stack.add(new Position(x+1, y, 0));
+				visited[x+1][y] = true;
+				//currentPos.count++;
+			}
+			else {
+				if (x == row-1 && y == col-1) {
+					if (time+1 == shortestTime)
+						count++;
+				}
+				
+				stack.pop();
+				visited[x+1][y] = false; // ★★★★★
+				visited[x][y+1] = false; // ★★★★★
+				visited[x][y] = true;    // ★★★★★
+				time--;
+			}
+				
+			/*if (currentPos.count == 2) {
+				stack.pop();
+				visited[x+1][y] = false;
+				visited[x][y+1] = false;
+				visited[x][y] = true;
+			}*/
+			
+			/* if (x == col-1 && y == row-1) {
+				time++;
+				if (time == shortestTime) {
+					count++;
+				}
+			} */
+			
+			System.out.println(x + " " + y + " " + time);
+		}
+		System.out.println(count%1000000007);
+		
+		/*while (!stack.isEmpty()) {
+			Position currentPos = stack.pop();
+			
+			//int stackSize = stack.size();
+			//while (stackSize-- > 0) {
+			
+			int x = currentPos.currentX;
+			int y = currentPos.currentY;
+			
+			System.out.println(x + " " + y + " " + time);
+			
+			if (!visited[x+1][y]) {				
+				if (map[x+1][y] == '.') {
+					time++;
+					stack.add(new Position(x+1, y));
+				}
+				else if (map[x+1][y] == 'X' || x == col) {
+					stack.add(new Position(x, y));
+				}
+				visited[x+1][y] = true;
+				continue;
+			}
+			if (!visited[x][y+1]) {				
+				if (map[x][y+1] == '.') {
+					time++;
+					stack.add(new Position(x, y+1));
+				}
+				else if (map[x][y+1] == 'X' || y == row) {
+					stack.add(new Position(x, y));
+				}
+				visited[x][y+1] = true;
+				continue;
+			}
+			System.out.println("막힘");
+				
+			//}
+		}*/
+		
+		/* while (!queue.isEmpty()) {		
+			Position currentPos = queue.poll();
+			
+			for (int i = 0; i < 2; i++) {
+				int x = currentPos.currentX + dx[i];
+				int y = currentPos.currentY = dy[i];
+				
+				if (map[x][y] == 'X' || x >= col || y >= row) continue;
+				if (visited[x][y]) continue;
+				
+				visited[x][y] = true;
+				
+				if (map[x][y] == '.') {
+					time++;
+					queue.add(new Position(x, y));
+				}
+				
+				System.out.println(x + " " + y + " " + time);
+			}	
+		} */
+
+		//int[] dx = {0, 1};
+		//int[] dy = {1, 0};
+		
+		//boolean[][] obstacle = new boolean[row][col];
+		/*while (!queue.isEmpty()) {
+			int time = 0;
+					
+			int size = queue.size(); // time을 위한
+			while (size-- > 0) {
+				Position currentPos = queue.poll();
+				
+				int x = currentPos.currentX;
+				int y = currentPos.currentY;
+				
+				if (map[x][y] == '.') {
+					time++;
+					queue.add(new Position(x+1, y));
+				}
+				else if ((x > col-1 || map[x][y] == 'X') && !obstacle[x][y]) {
+					Position PreviousPos = queue.poll();
+					int prevX = PreviousPos.currentX;
+					int prevY = PreviousPos.currentY;
+					queue.add(new Position(prevX, prevY+1));
+					obstacle[x][y] = true;
+				}
+				else if ((y > row-1 || map[x][y] == 'X') && !obstacle[x][y]) {
+					Position PreviousPos = queue.poll();
+					int prevX = PreviousPos.currentX;
+					int prevY = PreviousPos.currentY;
+					queue.add(new Position(prevX+1, prevY));
+					obstacle[x][y] = true;
+				}
+				
+				if (x == col-1 && y == row-1) 
+					if (time == shortestTime) count++;
+				
+				System.out.println(time);
+			}
+		}*/
+		
+		/*while (!queue.isEmpty()) {
+			int time = 0;
+						
+			Position currentPos = queue.poll();
+			int x = currentPos.currentX;
+			int y = currentPos.currentY;
+			for (int i = 0; i < col; i++) {
+				if (x+1 > col)
+					break;
+				if (map[x+1][y] == '.') {
+					time++;
+					queue.add(new Position(x+1, y));
+				}
+				else if (map[x+1][y] == 'X') 
+					break;
+			}
+			for (int i = 0; i < row; i++) {
+				if (y+1 > row)
+					break;
+				if (map[x][y+1] == '.') {
+					time++;
+					queue.add(new Position(x, y+1));
+				}
+				else if (map[x][y+1] == 'X') 
+					break;
+			}
+			if (time == shortestTime) count++;
+		}*/
+		
+		
+		/*while (!queue.isEmpty()) {
+			int time = 0;
+			
+			int size = queue.size(); // time을 위한
+			while (size-- > 0) {
+				Position currentPos = queue.poll();
+				time++;
+				
+				for (int i = 0; i < 2; i++) {
+					int x = currentPos.currentX + dx[i];
+					int y = currentPos.currentY + dy[i];
+					
+					System.out.println(x + " " + y + " " + currentPos.count);
+					if (x > row-1 || y > col-1) continue;
+					if (map[x][y] == 'X') continue;
+					
+					if (x == row-1 && y == col-1) 
+						if (currentPos.count == shortestTime)
+							count++;
+					
+					queue.add(new Position(x, y, currentPos.count++));
+				}
+			}
+		} */
+		
+		/*while (!queue.isEmpty()) {
+			time++;
+			
+			int size = queue.size();
+			while (size-- > 0) {
+				Position currentPos = queue.poll();
+				
+				for (int i = 0; i < 4; i++) {
+					int x = currentPos.currentX + dx[i];
+					int y = currentPos.currentY + dy[i];
+					
+					if (x < 0 || y < 0 || x > row-1 || y > col-1) continue;
+					if (visited[x][y]) continue;
+					
+					visited[x][y] = true;
+					if (map[x][y] == 'X') break;
+					
+					System.out.println(time + "---");
+					
+					if (x == row-1 && y == col-1) {
+						if (time == shortestLen) count++;
+					}
+					//System.out.println(x + " " + y + " " + currentPos.count);
+					//if (currentPos.count == shortestLen) lenCount++;
+					//if (time == shortestLen) count++;
+					//queue.add(new Position(x,y,currentPos.count++));
+				}
+			}
+			//System.out.println(time + "====");
+		}*/
+	}	
+}
