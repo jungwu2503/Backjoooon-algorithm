@@ -1,0 +1,151 @@
+import java.io.*;
+import java.util.*;
+
+public class Main { 
+	
+	public static void main(String[] args) throws Exception {		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		StringBuilder sb = new StringBuilder();
+				
+		int n = Integer.parseInt(br.readLine());
+		
+		while (n-- > 0) {
+			String ac = br.readLine();
+			int elementNum = Integer.parseInt(br.readLine());
+			String inputArr = br.readLine();
+			boolean isReversed = false;
+			boolean isError = false;
+			
+			st = new StringTokenizer(inputArr, "[],");
+			
+			ArrayList<Integer> list = new ArrayList<Integer>();
+			for (int i = 0; i < elementNum; i++) 
+				list.add(Integer.parseInt(st.nextToken()));
+			
+			for (int i = 0; i < ac.length(); i++) {				
+				if (ac.charAt(i) == 'R' && !isReversed) {
+					isReversed = true;
+				}
+				else if (ac.charAt(i) == 'R' && isReversed) {
+					isReversed = false;
+				}
+				if (ac.charAt(i) == 'D') {
+					if (list.size() == 0) {
+						isError = true;
+						break;
+					}
+					if (!isReversed)
+						list.remove(0);
+					else
+						list.remove(list.size()-1);
+				}
+			}
+			
+			if (isError) sb.append("error\n");
+			else {
+				if (isReversed) {
+					/*sb.append("[");
+					for (int i = list.size()-1; i >= 0; i--) {
+						sb.append(list.get(i) + ",");
+					}
+					if (sb.charAt(sb.length()-1) == ',')
+						sb.deleteCharAt(sb.length()-1);
+					sb.append("]\n");*/
+					
+					ListIterator<Integer> it = list.listIterator(list.size());
+					sb.append("[");
+					while (it.hasPrevious()) {
+						sb.append(it.previous() + ",");
+					}
+					if (sb.charAt(sb.length()-1) == ',')
+						sb.deleteCharAt(sb.length()-1);
+					sb.append("]\n");
+				}
+				else {
+					ListIterator<Integer> it = list.listIterator();
+					sb.append("[");
+					while (it.hasNext()) {
+						sb.append(it.next() + ",");
+					}
+					if (sb.charAt(sb.length()-1) == ',')
+						sb.deleteCharAt(sb.length()-1);
+					sb.append("]\n");
+				}
+			}
+			
+			/*for (int i = 0; i < list.size(); i++) {
+				if (i == 0)
+					sb.append("[");
+				if (i == list.size()-1) {
+					sb.append(list.get(i) + "]");
+					break;
+				}
+				sb.append(list.get(i) + ",");
+			}
+			sb.append("\n");*/
+		}
+		System.out.println(sb);
+		
+	}	
+} 
+
+/*public class Main {
+	
+	public static void main(String[] args) throws Exception {		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		StringBuilder sb = new StringBuilder();
+				
+		int n = Integer.parseInt(br.readLine());
+		
+		ArrayList<Integer> tmpList;
+		
+		while (n-- > 0) {
+			String ac = br.readLine();
+			int elementNum = Integer.parseInt(br.readLine());
+			String inputArr = br.readLine();
+			String removeSquareBrackets = "";
+			for (int i = 1; i < inputArr.length()-1; i++)
+				removeSquareBrackets += inputArr.charAt(i);
+			
+			st = new StringTokenizer(removeSquareBrackets, ",");
+			
+			ArrayList<Integer> list = new ArrayList<Integer>();
+			while (st.hasMoreTokens()) {
+				list.add(Integer.parseInt(st.nextToken()));
+			}
+			
+			for (int i = 0; i < ac.length(); i++) {
+				tmpList = new ArrayList<Integer>();
+				
+				if (ac.charAt(i) == 'R' ) {
+					for (int j = list.size()-1; j >= 0; j--) {
+						tmpList.add(list.get(j));
+					}
+					list = tmpList;
+				}
+				if (ac.charAt(i) == 'D') {
+					if (list.size() == 0) {
+						sb.append("error");
+						break;
+					}
+					list.remove(0);
+				}
+			}
+			
+			for (int i = 0; i < list.size(); i++) {
+				if (i == 0)
+					sb.append("[");
+				if (i == list.size()-1) {
+					sb.append(list.get(i) + "]");
+					break;
+				}
+				sb.append(list.get(i) + ",");
+			}
+			sb.append("\n");
+		}
+		System.out.println(sb);
+		
+	}	
+}*/
