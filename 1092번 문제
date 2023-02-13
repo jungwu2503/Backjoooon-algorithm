@@ -1,0 +1,172 @@
+import java.io.*;
+import java.util.*;
+
+public class Main { 
+	
+	public static void main(String[] args) throws Exception {		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		//StringBuilder sb = new StringBuilder();
+				
+		int n = Integer.parseInt(br.readLine());
+		st = new StringTokenizer(br.readLine());
+		ArrayList<Integer> craine = new ArrayList<Integer>();
+		
+		for (int i = 0; i < n; i++) {
+			craine.add(Integer.parseInt(st.nextToken()));
+		}
+		
+		int numOfBox = Integer.parseInt(br.readLine());
+		st = new StringTokenizer(br.readLine());
+		
+		ArrayList<Integer> boxes = new ArrayList<Integer>();
+		
+		for (int i = 0; i < numOfBox; i++) {
+			boxes.add(Integer.parseInt(st.nextToken()));
+		}
+
+		Collections.sort(craine);
+		Collections.sort(boxes);
+		
+		int cnt = 0;
+		int removeCnt = 0;
+		int index = 0;
+		
+		if (boxes.get(boxes.size()-1) > craine.get(craine.size()-1)) {
+			System.out.println("-1");
+			return;
+		}
+
+		while (!boxes.isEmpty()) {
+			removeCnt = n;
+			index = boxes.size()-1;
+			while (removeCnt > 0) {
+				if (index < 0) break;
+				if (boxes.get(index) <= craine.get(removeCnt-1)) {
+					boxes.remove(index);
+					removeCnt--;
+				}
+				index--;
+			}
+			cnt++;
+		}
+		System.out.println(cnt);
+	}	
+}
+
+/*public class Main { 
+	
+	public static void main(String[] args) throws Exception {		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		//StringBuilder sb = new StringBuilder();
+				
+		int n = Integer.parseInt(br.readLine());
+		st = new StringTokenizer(br.readLine());
+		int[] craine = new int[n];
+		
+		for (int i = 0; i < n; i++) {
+			craine[i] = Integer.parseInt(st.nextToken());
+		}
+		
+		int numOfBox = Integer.parseInt(br.readLine());
+		st = new StringTokenizer(br.readLine());
+		
+		int[] boxes = new int[numOfBox];
+		
+		for (int i = 0; i < numOfBox; i++) {
+			boxes[i] = Integer.parseInt(st.nextToken());
+		}
+		
+		Arrays.sort(craine);
+		Arrays.sort(boxes);
+		
+		int cnt = 0;
+		int index = numOfBox-1;
+		while (index >= 0) {
+			for (int j = n-1; j >= 0; j--) {
+				if (index < 0) {
+					cnt++;
+					break;
+				}
+				//System.out.println(craine[j] + "=craine["+j+"] " + boxes[index] + "=boxes["+index+"]");
+				if (craine[j] >= boxes[index]) {
+					index--;
+					if (j == 0) cnt++;
+					continue;
+				}
+				else {
+					cnt++;
+					break;
+				}
+			}
+			//System.out.println(cnt+"=currentCnt");
+		}
+		System.out.println(cnt);
+		
+	}	
+} */
+
+/*public class Main { 
+	
+	public static void main(String[] args) throws Exception {		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		//StringBuilder sb = new StringBuilder();
+				
+		int n = Integer.parseInt(br.readLine());
+		st = new StringTokenizer(br.readLine());
+		int weight = 0;
+		
+		for (int i = 0; i < n; i++) {
+			weight += Integer.parseInt(st.nextToken());
+		}
+		
+		int numOfBox = Integer.parseInt(br.readLine());
+		st = new StringTokenizer(br.readLine());
+		
+		int[] boxes = new int[numOfBox];
+		
+		for (int i = 0; i < numOfBox; i++) {
+			boxes[i] = Integer.parseInt(st.nextToken());
+		}
+		
+		Arrays.sort(boxes);
+		
+		int cnt = 0;
+		int index = numOfBox;
+		
+		while (index >= 0) {
+			int tmp = weight;
+			for (int i = 0; i < n; i++) {
+				index--;
+				if (index < 0) break;
+				System.out.println(index + " " + tmp + " " + boxes[index] + " ");
+				if (tmp > boxes[index]) {
+					tmp -= boxes[index];
+				}
+				else {
+					index++;
+					break;
+				}
+			}
+			cnt++;
+			System.out.println(cnt+"=cnt");
+		}
+
+		System.out.println(cnt+"-==-");
+		
+		//while (weight >= 0) {
+		//	for (int i = 0; i < 3; i++) {
+		//		if (index < 0) break;
+		//		System.out.println(index);
+		//		if (weight > boxes[index]) {
+		//			weight -= boxes[index--];
+		//		}
+		//		else break;
+		//	}
+		//	cnt++;
+		//	if (index < 0) break;
+		//}
+	}	
+} */
