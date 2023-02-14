@@ -1,0 +1,28 @@
+import java.io.*;
+import java.util.*;
+
+public class Main { 
+	
+	public static void main(String[] args) throws Exception {		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		
+		String input = br.readLine();
+		String[] suffixArr = new String[input.length()];
+		
+		String tmp;
+		for (int i = 0; i < input.length(); i++) {
+			tmp = "";
+			for (int j = i; j < input.length(); j++) {
+				tmp += input.charAt(j);
+			}
+			suffixArr[i] = tmp;
+		}
+		
+		Arrays.sort(suffixArr);
+		
+		for (int i = 0; i < input.length(); i++) {
+			System.out.println(suffixArr[i]);
+		}
+	}	
+}
