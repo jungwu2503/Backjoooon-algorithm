@@ -1,0 +1,29 @@
+import java.io.*;
+import java.util.*;
+
+public class Main { 
+	
+	public static void main(String[] args) throws Exception {		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		//StringBuilder sb = new StringBuilder();
+		
+		st = new StringTokenizer(br.readLine());
+		
+		int n = Integer.parseInt(st.nextToken());
+		int milliSec = Integer.parseInt(st.nextToken());
+		
+		int currentRecord = Integer.parseInt(br.readLine());
+		int prevRecord = currentRecord;
+		int gift = 0;
+		
+		n--;
+		while (n-- > 0) {
+			currentRecord = Integer.parseInt(br.readLine());
+			if (prevRecord - currentRecord >= milliSec) gift++;
+			prevRecord = currentRecord;
+		}
+		
+		System.out.println(gift);
+	}	
+}
