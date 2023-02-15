@@ -1,0 +1,53 @@
+import java.io.*;
+import java.util.*;
+
+public class Main { 
+	
+	public static void main(String[] args) throws Exception {		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		StringBuilder sb = new StringBuilder();
+		
+		st = new StringTokenizer(br.readLine());
+		
+		int mapLen = Integer.parseInt(st.nextToken());
+		int searchCnt = Integer.parseInt(st.nextToken());
+		int[][] map = new int[mapLen][mapLen];
+		int[][] dpTable = new int[mapLen][mapLen];
+		int numForDp;
+		
+		for (int i = 0; i < mapLen; i++) {
+			st = new StringTokenizer(br.readLine());
+			numForDp = 0;
+			for (int j = 0; j < mapLen; j++) {
+				map[i][j] = Integer.parseInt(st.nextToken());
+				numForDp += map[i][j];
+				dpTable[i][j] = numForDp;
+			}
+		}
+		
+		int result = 0;
+		while (searchCnt-- > 0) {
+			st = new StringTokenizer(br.readLine());
+			int x1 = Integer.parseInt(st.nextToken())-1;
+			int y1 = Integer.parseInt(st.nextToken())-1;
+			int x2 = Integer.parseInt(st.nextToken())-1;
+			int y2 = Integer.parseInt(st.nextToken())-1;
+			
+			//System.out.println(x1 + "=x1" + y1 + " " + y2);
+			if (x1 == x2 && y1 == y2) { //
+				sb.append(map[x1][y1]+"\n");
+				continue;
+			}
+			
+			result = 0;
+			for (int i = x1; i <= x2; i++) {
+				if (y1 == 0) result += dpTable[i][y2];
+				else result += dpTable[i][y2] - dpTable[i][y1-1];
+				//System.out.println(result);
+			}
+			sb.append(result+"\n");
+		}
+		System.out.println(sb);
+	}	
+}
