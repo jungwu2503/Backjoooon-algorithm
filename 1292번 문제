@@ -1,0 +1,42 @@
+import java.io.*;
+import java.util.*;
+
+public class Main { 
+	
+	public static void main(String[] args) throws Exception {		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		//StringBuilder sb = new StringBuilder();
+		
+		st = new StringTokenizer(br.readLine());
+		int start = Integer.parseInt(st.nextToken());
+		int end = Integer.parseInt(st.nextToken());
+		
+		int sum = 0;
+		int[] arr = new int[1001];
+		arr[0] = 0;
+		int currentVal = 0;
+		for (int i = 1; i < 1001; i+=currentVal) {
+			currentVal++;
+			for (int j = 0; j < i; j++) {
+				if (i+j > 1000) break;
+				arr[i+j] = currentVal;
+			}
+		}
+		
+		for (int i = start; i <= end; i++) {
+			sum += arr[i];
+		}
+		
+		/*for (int i = start; i <= end-start; i++) {
+			if (i == end) break;
+			for (int j = 0; j < i; j++) {
+				if (j == end) break;
+				sum += i;
+				System.out.print(i + " ");
+			}
+		}*/
+		
+		System.out.println(sum);
+	}	
+}
