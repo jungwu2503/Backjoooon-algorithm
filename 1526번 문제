@@ -1,0 +1,156 @@
+import java.io.*;
+import java.util.*;
+
+public class Main { 
+	
+	public static void main(String[] args) throws Exception {		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+
+		int input = Integer.parseInt(br.readLine());
+		boolean flag = true;
+		int num = 0;
+		
+		for (int i = input; i >= 4; i--) {
+			num = i;
+			flag = true;
+			
+			while (num != 0) {
+				if (num % 10 == 4 || num % 10 == 7)
+					num /= 10;
+				else {
+					flag = false;
+					break;
+				}
+			}
+			
+			if (flag) {
+				System.out.print(i);
+				break;
+			}
+		}
+		
+		/*int tmp = input;
+		int frontNum = 0;
+		while (tmp > 0) {
+			frontNum = tmp;
+			tmp /= 10;
+		}
+		//System.out.println(frontNum);
+		int remnant = 0;
+		
+		while (input > 0) {
+			
+			if (input % 10 >= 7) {
+				output += '7';
+			}
+			else if (input % 10 >= 4 && !(input/10%10 > 7)) {
+				output += '4';
+			}
+			else if (input / 10 > 0) {
+				output += '7';
+				input -= 10;
+			}
+			
+			remnant = input;
+			input /= 10;
+		}
+		
+		//System.out.println(remnant);
+		
+		if (frontNum > 7) {
+			System.out.print("7");
+			for (int i = output.length()-2; i >= 0; i--) {
+				System.out.print("7");
+			}
+		}
+		else if (remnant > 4 && remnant < 7) {
+			System.out.print("4");
+			for (int i = output.length()-2; i >= 0; i--) {
+				System.out.print("7");
+			}
+		}
+		else {
+			for (int i = output.length()-1; i >= 0; i--) {
+				System.out.print(output.charAt(i));
+			}
+		}*/
+		
+		/*String s = br.readLine();
+		boolean flag = true;
+		for (int i = 0; i < s.length(); i++) {
+			if (s.charAt(i) != '4' && s.charAt(i) != '7') {
+				flag = false;
+				break;
+			}
+		}
+		
+		if (flag) {
+			System.out.println(s);
+			return;
+		}
+		
+		int input = Integer.parseInt(s);
+		String output = "";
+		boolean hasRemain = false;
+		int frontNum = 0;
+		
+		while (input > 0) {
+			frontNum = input % 10;
+			if (input / 10 > 0) {
+				output += '7';
+				hasRemain = true;
+			}
+			else {
+				if (hasRemain) {
+					input -= 1;
+					hasRemain = false;
+				}
+				if (hasRemain || input % 10 >= 7) {
+					output += '7';
+				}
+				else if (input % 10 >= 4) {
+					output += '4';
+				}
+			}
+			
+			input /= 10;
+		}*/
+		
+		//System.out.println(frontNum);
+		//System.out.println(output.charAt(output.length()-1)-'0');
+		/*if (frontNum > 7) {
+			System.out.print("7");
+			for (int i = output.length()-2; i >= 0; i--) {
+				System.out.print("7");
+			}
+		}
+		else if (frontNum > 4 && frontNum < 7) {
+			System.out.print("4");
+			for (int i = output.length()-2; i >= 0; i--) {
+				System.out.print("7");
+			}
+		}
+		else {
+			for (int i = output.length()-1; i >= 0; i--) {
+				System.out.print(output.charAt(i));
+			}
+		}*/
+		
+		/*String input = br.readLine();
+		String output = "";
+		boolean remain = false;
+		
+		for (int i = 0; i < input.length(); i++) {
+			if (remain || input.charAt(i) == '7' || input.charAt(i) == '8' || input.charAt(i) == '9') 
+				output += '7';
+			else if (input.charAt(i) == '4' || input.charAt(i) == '5' || input.charAt(i) == '6')
+				output += '4';
+			else {
+				remain = true;
+			}				
+		}
+		
+		System.out.println(output);*/
+	}	
+}
