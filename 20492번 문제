@@ -1,0 +1,17 @@
+import java.io.*;
+import java.util.*;
+
+public class Main { 
+	
+	public static void main(String[] args) throws Exception {		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		//StringTokenizer st;
+
+		int n = Integer.parseInt(br.readLine());
+		
+		int result1 = n - (n*22/100);
+		int result2 = n - (n*20/100)*22/100;
+		
+		System.out.println(result1 + " " + result2);		
+	}	
+}
