@@ -1,0 +1,230 @@
+import java.io.*;
+import java.util.*;
+
+/*class Horizontal {
+	int left;
+	int right;
+	Horizontal() {
+		left = 0;
+		right = 0;
+	}
+}
+
+class Vertical {
+	int up;
+	int down;
+	Vertical() {
+		up = 0;
+		down = 0;
+	}
+}*/
+
+public class Main { 
+	static int LEFT = 0;
+	static int RIGHT = 1;
+	static int UP = 2;
+	static int DOWN = 3;
+	
+	public static void main(String[] args) throws Exception {		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		//StringTokenizer st;
+		
+		int n = Integer.parseInt(br.readLine());
+		String input = "";
+		
+		int direction = RIGHT; 
+		
+		while (n-- > 0) {
+			input = br.readLine();
+			int maxRight = 0;
+			int maxLeft = 0;
+			int maxUp = 0;
+			int maxDown = 0;
+			int currentX = 0;
+			int currentY = 0;
+			
+			for (int i = 0; i < input.length(); i++) {
+				switch (direction) {
+					case 0: { // 현재방향 left // case 에는 0이 아닌 LEFT로 적용 안되는가
+						if (input.charAt(i) == 'F') {
+							currentX--;
+						}
+						else if (input.charAt(i) == 'B') {
+							currentX++;
+						}
+						else if (input.charAt(i) == 'R') {
+							direction = UP;
+						}
+						else if (input.charAt(i) == 'L') {
+							direction = DOWN;
+						}		
+						if (currentX < maxLeft) maxLeft = currentX;
+						if (currentX > maxRight) maxRight = currentX;	
+						break;
+					}
+					case 1: { // 현재방향 right
+						if (input.charAt(i) == 'F') {
+							currentX++;
+						}
+						else if (input.charAt(i) == 'B') {
+							currentX--;
+						}
+						else if (input.charAt(i) == 'R') {
+							direction = DOWN;
+						}
+						else if (input.charAt(i) == 'L') {
+							direction = UP;
+						}
+						if (currentX > maxRight) maxRight = currentX;		
+						if (currentX < maxLeft) maxLeft = currentX;				
+						break;
+					}
+					case 2: { // 방향 위
+						if (input.charAt(i) == 'F') {
+							currentY++;
+						}
+						else if (input.charAt(i) == 'B') {
+							currentY--;
+						}
+						else if (input.charAt(i) == 'R') {
+							direction = RIGHT;
+						}
+						else if (input.charAt(i) == 'L') {
+							direction = LEFT;
+						}
+						if (currentY > maxUp) maxUp = currentY;
+						if (currentY < maxDown) maxDown = currentY;
+						break;
+					}
+					case 3: { // 방향 아래
+						if (input.charAt(i) == 'F') {
+							currentY--;
+						}
+						else if (input.charAt(i) == 'B') {
+							currentY++;
+						}
+						else if (input.charAt(i) == 'R') {
+							direction = LEFT;
+						}
+						else if (input.charAt(i) == 'L') {
+							direction = RIGHT;
+						}
+						if (currentY < maxDown) maxDown = currentY;
+						if (currentY > maxUp) maxUp = currentY;
+						break;
+					}
+				}
+			}
+			
+			//System.out.println(maxRight + " " + maxLeft + " " + maxUp + " " + maxDown);
+			//System.out.println(currentX + " " + currentY);
+			System.out.println((maxRight-maxLeft) * (maxUp-maxDown));
+		}
+		
+		/*Horizontal horizontal;
+		Vertical vertical; 
+		
+		int direction = RIGHT; 
+				
+		while (n-- > 0) {
+			input = br.readLine();
+			int size = input.length();
+			
+			horizontal = new Horizontal();
+			vertical = new Vertical();
+	
+			int maxH = 0;
+			int maxV = 0;
+			int currentH = 0;
+			int currentV = 0;
+			
+			for (int i = 0; i < input.length(); i++) {
+				switch (direction) {
+					case 0: { // 현재방향 left // case 에는 0이 아닌 LEFT로 적용 안되는가
+						if (input.charAt(i) == 'F') {
+							horizontal.left++;
+							currentH--;
+						}
+						else if (input.charAt(i) == 'B') {
+							horizontal.right++;
+							currentH++;
+						}
+						else if (input.charAt(i) == 'R') {
+							direction = UP;
+						}
+						else if (input.charAt(i) == 'L') {
+							direction = DOWN;
+						}		
+						//currentH = Math.abs(currentH);
+						if (Math.abs(currentH) > maxH) maxH = Math.abs(currentH);
+						break;
+					}
+					case 1: { // 현재방향 right
+						if (input.charAt(i) == 'F') {
+							horizontal.right++;
+							currentH++;
+						}
+						else if (input.charAt(i) == 'B') {
+							horizontal.left++;
+							currentH--;
+						}
+						else if (input.charAt(i) == 'R') {
+							direction = DOWN;
+						}
+						else if (input.charAt(i) == 'L') {
+							direction = UP;
+						}
+						//currentH = Math.abs(currentH);
+						if (Math.abs(currentH) > maxH) maxH = Math.abs(currentH);
+						break;
+					}
+					case 2: { // 방향 위
+						if (input.charAt(i) == 'F') {
+							vertical.up++;
+							currentV++;
+						}
+						else if (input.charAt(i) == 'B') {
+							vertical.down++;
+							currentV--;
+						}
+						else if (input.charAt(i) == 'R') {
+							direction = RIGHT;
+						}
+						else if (input.charAt(i) == 'L') {
+							direction = LEFT;
+						}
+						//currentV = Math.abs(currentV);
+						if (Math.abs(currentV) > maxV) maxV = Math.abs(currentV);
+						break;
+					}
+					case 3: { // 방향 아래
+						if (input.charAt(i) == 'F') {
+							vertical.down++;
+							currentV--;
+						}
+						else if (input.charAt(i) == 'B') {
+							vertical.up++;
+							currentV++;
+						}
+						else if (input.charAt(i) == 'R') {
+							direction = LEFT;
+						}
+						else if (input.charAt(i) == 'L') {
+							direction = RIGHT;
+						}
+						//currentV = Math.abs(currentV);
+						if (Math.abs(currentV) > maxV) maxV = Math.abs(currentV);
+						break;
+					}
+				}
+			}
+			
+			//maxH = (horizontal.left > horizontal.right) ? horizontal.left : horizontal.right;
+			//maxV = (vertical.up > vertical.down) ? vertical.up : vertical.down;
+			
+			//System.out.println(maxV + "=v, " + maxH + "=h");
+			System.out.println(maxH * maxV);
+		}
+		*/
+	}	
+}
