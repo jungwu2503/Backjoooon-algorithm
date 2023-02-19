@@ -1,0 +1,35 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	
+	public static void main(String[] args) throws Exception {		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		
+		int n = Integer.parseInt(br.readLine());
+		int[] arr;
+		
+		while (n-- > 0) {
+			int size = Integer.parseInt(br.readLine());
+			st = new StringTokenizer(br.readLine());
+			
+			arr = new int[size];
+			
+			int cnt = 0;
+			
+			for (int i = 0; i < size; i++) {
+				arr[i] = Integer.parseInt(st.nextToken());
+			}
+			
+			for (int i = 1; i < size; i++) {
+				for (int j = 0; j < i; j++) {
+					if (arr[i] >= arr[j]) cnt++;
+				}
+			}
+			
+			System.out.println(cnt);
+		}
+		
+	}	
+}
