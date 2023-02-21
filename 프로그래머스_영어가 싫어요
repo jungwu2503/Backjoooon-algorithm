@@ -1,0 +1,105 @@
+class Solution {
+    public long solution(String numbers) {
+        String answer = "";
+        
+        for (int i = 0; i < numbers.length(); i++) {
+            if (numbers.charAt(i) == 'z') {
+                if (numbers.charAt(i+1) == 'e') {
+                    if (numbers.charAt(i+2) == 'r') {
+                        if (numbers.charAt(i+3) == 'o') {
+                            answer += '0';
+                            i += 3;
+                        }
+                    }
+                }
+            }
+            else if (numbers.charAt(i) == 'o') {
+                if (numbers.charAt(i+1) == 'n') {
+                    if (numbers.charAt(i+2) == 'e') {
+                        answer += '1';
+                        i += 2;
+                    }
+                }
+            }
+            else if (numbers.charAt(i) == 't') {
+                if (numbers.charAt(i+1) == 'w') {
+                    if (numbers.charAt(i+2) == 'o') {
+                        answer += '2';
+                        i += 2;
+                    }
+                }
+                else if (numbers.charAt(i+1) == 'h') {
+                    if (numbers.charAt(i+2) == 'r') {
+                        if (numbers.charAt(i+3) == 'e') {
+                            if (numbers.charAt(i+4) == 'e') {
+                                answer += '3';
+                                i += 4;
+                            }
+                        }
+                    }
+                }
+            }
+            else if (numbers.charAt(i) == 'f') {
+                if (numbers.charAt(i+1) == 'o') {
+                    if (numbers.charAt(i+2) == 'u') {
+                        if (numbers.charAt(i+3) == 'r') {
+                            answer += '4';
+                            i += 3;
+                        }
+                    }
+                }
+                else if (numbers.charAt(i+1) == 'i') {
+                    if (numbers.charAt(i+2) == 'v') {
+                        if (numbers.charAt(i+3) == 'e') {
+                            answer += '5';
+                            i += 3;
+                        }
+                    }
+                }
+            }
+            else if (numbers.charAt(i) == 's') {
+                if (numbers.charAt(i+1) == 'i') {
+                    if (numbers.charAt(i+2) == 'x') {
+                        answer += '6';
+                        i += 2;
+                    }
+                }
+                else if (numbers.charAt(i+1) == 'e') {
+                    if (numbers.charAt(i+2) == 'v') {
+                        if (numbers.charAt(i+3) == 'e') {
+                            if (numbers.charAt(i+4) == 'n') {
+                                answer += '7';
+                                i += 4;
+                            }
+                        }
+                    }
+                }
+            }
+            else if (numbers.charAt(i) == 'e') {
+                if (numbers.charAt(i+1) == 'i') {
+                    if (numbers.charAt(i+2) == 'g') {
+                        if (numbers.charAt(i+3) == 'h') {
+                            if (numbers.charAt(i+4) == 't') {
+                                answer += '8';
+                                i += 4;
+                            }
+                        }
+                    }
+                }
+            }
+            else if (numbers.charAt(i) == 'n') {
+                if (numbers.charAt(i+1) == 'i') {
+                    if (numbers.charAt(i+2) == 'n') {
+                        if (numbers.charAt(i+3) == 'e') {
+                            answer += '9';
+                            i += 3;
+                        }
+                    }
+                }
+            }
+        }
+        
+        long result = Long.parseLong(answer);
+        return result;
+    }
+}
