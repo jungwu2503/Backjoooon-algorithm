@@ -1,0 +1,23 @@
+class Solution {
+    public int solution(String my_string) {
+        int answer = 0;
+        int sum = 0;
+        
+        for (int i = 0; i < my_string.length(); i++) {
+            if (my_string.charAt(i) >= '0' && my_string.charAt(i) <= '9') {
+                answer = my_string.charAt(i) - '0';
+                for (int j = i+1; j < my_string.length(); j++) {
+                    if (!(my_string.charAt(j) >= '0' && my_string.charAt(j) <= '9')) break;
+                    else {
+                        answer *= 10;
+                        answer += my_string.charAt(j)-'0';
+                        i++;
+                    }
+                }
+                sum += answer;
+            }
+        }
+        
+        return sum;
+    }
+}
