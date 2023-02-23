@@ -1,0 +1,21 @@
+class Solution {
+    public int solution(int n) {
+        int answer = 0;
+        boolean[] primeNum = new boolean[n+1];
+        
+        for (int i = 2; i <= n; i++) {
+            if (primeNum[i]) continue;
+            else {
+                for (int j = i+i; j <= n; j += i) {
+                    primeNum[j] = true;
+                }
+            }
+        }
+        
+        for (int i = 0; i <= n ; i++) {
+            if (primeNum[i]) answer++;
+        }
+        
+        return answer;
+    }
+}
