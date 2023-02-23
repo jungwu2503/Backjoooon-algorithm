@@ -1,0 +1,28 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int[] array, int n) {
+        int answer = 0;
+        int num1 = 0;
+        
+        Arrays.sort(array);
+        int num2 = array[array.length-1];
+        
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == n) {
+                answer = n;
+                return answer;
+            }
+            if (array[i] < n) {
+                num1 = array[i];
+            }
+            else if (array[i] > n) {
+                num2 = array[i];
+                break;
+            }
+        }
+        
+        answer = (n - num1 <= num2 - n) ? num1 : num2;
+        return answer;
+    }
+}
