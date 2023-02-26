@@ -1,0 +1,50 @@
+class Solution {
+    public String solution(int a, int b) {
+        String answer = "";
+        
+        int[] months = {31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        String[] days = {"FRI", "SAT", "SUN", "MON", "TUE", "WED", "THU"};
+        
+        int n = 0;
+        
+        for (int i = 1; i < a; i++) {
+            n += months[i-1];
+        }
+        
+        n += b;
+                
+        switch (n % 7) {
+            case 1 : {
+                answer = days[0];
+                break;
+            }
+            case 2 : {
+                answer = days[1];
+                break;
+            }
+            case 3 : {
+                answer = days[2];
+                break;
+            }
+            case 4 : {
+                answer = days[3];
+                break;
+            }
+            case 5 : {
+                answer = days[4];
+                break;
+            }
+            case 6 : {
+                answer = days[5];
+                break;
+            }
+            case 0 : {
+                answer = days[6];
+                break;
+            }   
+        }
+        
+        //answer = "" + n;
+        return answer;
+    }
+}
