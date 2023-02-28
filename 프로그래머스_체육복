@@ -1,0 +1,62 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int n, int[] lost, int[] reserve) {
+        int answer = n - lost.length;
+        
+        Arrays.sort(lost);
+        Arrays.sort(reserve);
+        
+        for (int i = 0; i < lost.length; i++) {
+            for (int j = 0; j < reserve.length; j++) {
+                if (lost[i] == reserve[j]) {
+                    answer++;
+                    lost[i] = -1;
+                    reserve[j] = -1;
+                    break;
+                }
+            }
+        }
+        
+        for (int i = 0; i < lost.length; i++) {
+            for (int j = 0; j < reserve.length; j++) {
+                if (lost[i]-1 == reserve[j] || lost[i]+1 == reserve[j]) {
+                    answer++;
+                    reserve[j] = -1;
+                    break;
+                }
+            }
+        }
+                
+        return answer;
+        
+        /*boolean[] clothes = new boolean[31];
+        
+        for (int i = 1; i < n; i++) {
+            clothes[i] = true;
+        }
+        
+        for (int i = 0; i < lost.length; i++) {
+            clothes[lost[i]] = false;
+        }
+        
+        for (int i = 0; i < reserve.length; i++) {
+            if (!clothes[reserve[i]+1]) {
+                clothes[reserve[i]+1] = true;
+                clothes[reserve[i]] = false;
+                continue;
+            }
+            if (!clothes[reserve[i]-1]) {
+                clothes[reserve[i]+1] = true;
+                clothes[reserve[i]] = false;
+                continue;
+            }
+        }
+        
+        for (int i = 1; i <= n; i++) {
+            if (clothes[i]) answer++;
+        }
+        
+        return clothes;*/
+    }
+}
