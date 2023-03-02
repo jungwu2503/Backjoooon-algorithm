@@ -1,0 +1,107 @@
+class Solution {    
+    int[][] personalTest = new int[2][4];
+    
+    public void front_scoring(String[] survey, int i, int score) {
+        if (survey[i].charAt(0) == 'R') {
+            personalTest[0][0]+=score;
+        }
+        else if (survey[i].charAt(0) == 'C') {
+            personalTest[0][1]+=score;
+        }
+        else if (survey[i].charAt(0) == 'J') {
+            personalTest[0][2]+=score;
+        }
+        else if (survey[i].charAt(0) == 'A') {
+            personalTest[0][3]+=score;
+        }
+        else if (survey[i].charAt(0) == 'T') {
+            personalTest[1][0]+=score;
+        }
+        else if (survey[i].charAt(0) == 'F') {
+            personalTest[1][1]+=score;
+        }
+        else if (survey[i].charAt(0) == 'M') {
+            personalTest[1][2]+=score;
+        }
+        else if (survey[i].charAt(0) == 'N') {
+            personalTest[1][3]+=score;
+        }
+    }
+    
+    public void rear_scoring(String[] survey, int i, int score) {
+        if (survey[i].charAt(1) == 'R') {
+            personalTest[0][0]+=score;
+        }
+        else if (survey[i].charAt(1) == 'C') {
+            personalTest[0][1]+=score;
+        }
+        else if (survey[i].charAt(1) == 'J') {
+            personalTest[0][2]+=score;
+        }
+        else if (survey[i].charAt(1) == 'A') {
+            personalTest[0][3]+=score;
+        }
+        else if (survey[i].charAt(1) == 'T') {
+            personalTest[1][0]+=score;
+        }
+        else if (survey[i].charAt(1) == 'F') {
+            personalTest[1][1]+=score;
+        }
+        else if (survey[i].charAt(1) == 'M') {
+            personalTest[1][2]+=score;
+        }
+        else if (survey[i].charAt(1) == 'N') {
+            personalTest[1][3]+=score;
+        }
+    }
+    
+    public String solution(String[] survey, int[] choices) {
+        String answer = "";
+        
+        for (int i = 0; i < survey.length; i++) {
+            switch (choices[i]) {
+                case 1 : {
+                    front_scoring(survey, i, 3);
+                    break;
+                }
+                case 2 : {
+                    front_scoring(survey, i, 2);
+                    break;
+                }
+                case 3 : {
+                    front_scoring(survey, i, 1);
+                    break;
+                }
+                case 4 : {                    
+                    break;
+                }
+                case 5 : {
+                    rear_scoring(survey, i, 1);
+                    break;
+                }
+                case 6 : {
+                    rear_scoring(survey, i, 2);
+                    break;
+                }
+                case 7 : {
+                    rear_scoring(survey, i, 3);
+                    break;
+                }
+            }
+        }
+        
+        char[] charArr1 = {'R', 'C', 'J', 'A'};
+        char[] charArr2 = {'T', 'F', 'M', 'N'};
+        
+        for (int i = 0; i < 4; i++) {
+            if (personalTest[0][i] >= personalTest[1][i]) {
+                answer += charArr1[i];
+            }
+            else {
+                answer += charArr2[i];
+            }
+        }
+        
+        return answer;
+    }
+}
