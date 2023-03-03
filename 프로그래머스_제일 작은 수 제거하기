@@ -1,0 +1,76 @@
+import java.util.*;
+
+class Solution {
+    public ArrayList<Integer> solution(int[] arr) {
+        int min = Integer.MAX_VALUE;
+        int aLen = arr.length;
+        
+        ArrayList<Integer> answer = new ArrayList<>();
+        
+        if (aLen == 1) {
+            answer.add(-1);
+            return answer;
+        }
+        
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < min) {
+                min = arr[i];
+            }
+        }
+        
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] != min) {
+                answer.add(arr[i]);
+            }
+        }
+        
+        /*int[] answer = new int[aLen];
+        int pos = -1;
+        
+        if (aLen == 1) {
+            answer[0] = pos;
+            return answer;
+        }
+        
+        answer = new int[aLen-1];
+        
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] < min) {
+                min = arr[i];
+                pos = i;
+            }
+        }
+        
+        int idx = 0;
+        for (int i = 0; i < aLen; i++) {
+            if (idx == pos) {
+                idx++;
+                continue;
+            }
+            answer[i] = arr[idx];
+            idx++;
+        }
+        
+        int[] answer;
+        int aLen = arr.length;
+        if (aLen == 1) {
+            answer = new int[aLen];
+            answer[0] = -1;
+            return answer;
+        }
+        
+        answer = new int[aLen-1];
+        
+        int idx = 0;
+        for (int i = 0; i < aLen; i++) {
+            if (idx == pos) {
+                idx++;
+                continue;
+            }
+            answer[i] = arr[idx];
+            idx++;
+        }*/
+        
+        return answer;
+    }
+}
