@@ -1,0 +1,25 @@
+import java.util.*;
+
+class Solution {
+    public int solution(String[] spell, String[] dic) {
+        int answer = 0;
+        boolean[] check = new boolean[spell.length];
+        
+        for (int i = 0; i < dic.length; i++) {
+            Arrays.fill(check, false);
+            for (int j = 0; j < dic[i].length(); j++) {
+                for (int k = 0; k < spell.length; k++) {
+                    if (dic[i].charAt(j) == spell[k].charAt(0)) {
+                        check[k] = true;
+                    }
+                }
+            }
+            for (int j = 0; j < check.length; j++) {
+                if (check[j] == false) break;
+                if (j == check.length-1) return 1;
+            }
+        }
+        
+        return 2;
+    }
+}
