@@ -1,0 +1,22 @@
+import java.util.*;
+
+class Solution {
+    public int[] solution(int[] numlist, int n) {
+        ArrayList<Integer> answer = new ArrayList<Integer>();
+        
+        for (int i = 0; i < numlist.length; i++) answer.add(numlist[i]);
+        
+        Collections.sort(answer, new Comparator<Integer>() {
+            public int compare(Integer a, Integer b) {
+                if (Math.abs(a-n) != Math.abs(b-n)) return Math.abs(a-n)-Math.abs(b-n);
+                return b - a;
+            }
+        });
+        
+        int[] result = new int[numlist.length];
+        for (int i = 0; i < numlist.length; i++) {
+            result[i] = answer.get(i);
+        }
+        return result;
+    }
+}
