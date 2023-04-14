@@ -1,0 +1,18 @@
+class Solution {
+    public int solution(int[] sides) {
+        int answer = 0;
+        int bigNum;
+        int smallNum;
+        if (sides[0] > sides[1]) {
+            bigNum = sides[0];
+            smallNum = sides[1];
+        } else {
+            bigNum = sides[1];
+            smallNum = sides[0];
+        }
+        answer = smallNum;
+        answer += (bigNum+smallNum) - bigNum - 1;
+        
+        return answer;
+    }
+}
