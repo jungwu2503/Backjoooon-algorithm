@@ -1,0 +1,83 @@
+import java.io.*;
+import java.util.*;
+
+public class Main {
+	public static void main(String[] args) throws Exception {		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st;
+		StringBuilder sb = new StringBuilder();
+		
+		LinkedList<Character> list = new LinkedList<Character>();
+		
+		String s = br.readLine();
+		for (int i = 0; i < s.length(); i++) {
+			list.add(s.charAt(i));
+		}
+		
+		int n = Integer.parseInt(br.readLine());
+		
+		ListIterator<Character> it = list.listIterator(); // 양방향 탐색을 위한 ListIterator 사용. 위치 찾아가지 않고 커서처럼 해당 위치에 계속 머무름
+		while (it.hasNext()) it.next(); // cursor 맨뒤로 이동
+		
+		while (n-- > 0) {
+			String input = br.readLine();
+			if (input.charAt(0) == 'L') {
+				if (it.hasPrevious()) it.previous();
+			}
+			if (input.charAt(0) == 'D') {
+				if (it.hasNext()) it.next();
+			}
+			if (input.charAt(0) == 'B') {
+				if (it.hasPrevious()) {
+					it.previous();
+					it.remove(); // it가 가리키는 마지막 요소 삭제
+				}
+			}
+			if (input.charAt(0) == 'P') {
+				st = new StringTokenizer(input);
+				st.nextToken(); //P
+				char token = st.nextToken().charAt(0);
+				it.add(token);
+			}
+		}
+		
+		for (var c : list) {
+			sb.append(c);
+			//sb.append(list.get(c)); // x
+		}
+		
+		System.out.println(sb);
+		
+		/*int currentIndex = s.length();
+		while (n-- > 0) {
+			String input = br.readLine();
+			if (input.charAt(0) == 'L') {
+				if (currentIndex != 0)
+					currentIndex--;
+			}
+			if (input.charAt(0) == 'D') {
+				if (currentIndex < s.length())
+					currentIndex++;
+			}
+			if (input.charAt(0) == 'B') {
+				if (currentIndex != 0) 
+					list.remove(--currentIndex);
+			}
+			if (input.charAt(0) == 'P') {
+				st = new StringTokenizer(input);
+				st.nextToken(); //P
+				char token = st.nextToken().charAt(0);
+				if (currentIndex >= list.size()) list.addLast(token);
+				else list.add(currentIndex, token);
+				currentIndex++;
+			}
+			//System.out.println(list);
+		}
+		//System.out.println(list);
+		
+		Iterator it = list.listIterator();
+		while (it.hasNext()) sb.append(it.next());
+		
+		System.out.println(sb);*/
+	}
+}
