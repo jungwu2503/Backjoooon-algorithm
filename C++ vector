@@ -1,0 +1,26 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<int> solution(int l, int r) {
+    vector<int> answer;
+    
+    int x = 0;
+    for (int i = l; i <= r; i++) {
+        int tmp = i;
+        bool flag = true;
+        while (tmp > 0) {
+            if (tmp % 10 != 5 && tmp % 10 != 0) {
+                flag = false;
+                break;
+            }
+            tmp /= 10;
+        }
+        if (flag) answer.push_back(i);
+    }
+    
+    if (answer.size() == 0) answer.push_back(-1);
+    
+    return answer;
+}
