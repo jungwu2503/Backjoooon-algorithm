@@ -1,0 +1,21 @@
+#include <string>
+#include <vector>
+#include <iostream>
+
+using namespace std;
+
+int solution(vector<int> num_list, int n) {
+    int answer = 0;
+    
+    vector<int>::iterator it;
+    
+    for (it = num_list.begin(); it != num_list.end(); it++) {
+        if (*it == n) {
+            cout << *it;
+            answer = 1;
+            break;
+        }
+    }    
+    
+    return answer;
+}
